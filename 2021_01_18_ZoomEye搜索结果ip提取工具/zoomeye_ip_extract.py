@@ -18,11 +18,12 @@ def extract(file, count):
         with open("zoomeye_ip_output.txt", "w") as f1:
             for i in range(count):
                 ip = dict_obj["matches"][i]["ip"];
-                print(ip);
+                port = dict_obj["matches"][i]["portinfo"]["port"];
+                print( ip + ":" + str(port) );
                 if platform.system() == "Linux":
-                    f1.write(ip + "\n");
+                    f1.write(ip + ":" + str(port) + "\n");
                 elif platform.system() == "Windows":
-                    f1.write(ip + "\r\n");
+                    f1.write(ip + ":" + str(port) + "\r\n");
 
 def main():
     if len(sys.argv) != 3:
