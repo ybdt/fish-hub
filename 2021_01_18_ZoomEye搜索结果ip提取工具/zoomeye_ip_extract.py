@@ -2,6 +2,11 @@ import json
 import sys
 import platform
 
+'''
+Author: ybdt
+Date: 2021/01/18
+'''
+
 def extract(file, count):
     with open(file, "r") as f0:
         json_content = f0.read();
