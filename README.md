@@ -1,5 +1,3 @@
-# pentest-hub
-
 # 0x00 有一个对主流有效的->黑盒fuzz工具
 https://github.com/projectdiscovery/nuclei  
 https://www.freebuf.com/sectool/258806.html
