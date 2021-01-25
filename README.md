@@ -4,6 +4,6 @@ https://www.freebuf.com/sectool/258806.html
 
 # 0x01 有一个对主流有效的->WAF绕过方式
 
-# 0x02 代码审计能力
+# 0x02 代码审计
 
-# 0x03 工具编写能力
+# 0x03 工具编写
