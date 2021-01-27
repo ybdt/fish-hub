@@ -1,5 +1,12 @@
+#!/usr/bin/python3
+
 import sys
 import requests
+
+'''
+Author: ybdt
+Date: 2020/12/17
+'''
 
 def main():
     if len(sys.argv) != 2:
