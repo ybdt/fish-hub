@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
-import json
-import sys
-import platform
-
 '''
 Author: ybdt
 Date: 2021/01/18
 '''
+
+import json
+import sys
+import platform
 
 def extract(file, count):
     with open(file, "r") as f0:
