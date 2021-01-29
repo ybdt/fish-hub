@@ -16,3 +16,6 @@ https://mp.weixin.qq.com/s/84se5CxYlVT05bcw654wKg 这篇文章用到了上述的
 
 2、可用&&代替and，如下图  
 ![image](./0.png)
+
+3、可用true代替and 1=1以及用false代替and 1=2，如下图  
+![image](./1.png)
