@@ -13,3 +13,6 @@ https://www.cnblogs.com/itcomputer/articles/5253263.html
 https://dev.mysql.com/doc/refman/5.7/en/comments.html  
 参考实例：  
 https://mp.weixin.qq.com/s/84se5CxYlVT05bcw654wKg 这篇文章用到了上述的技巧绕过了Mod_Security
+
+2、可用&&代替and，如下图  
+![image](./0.png)
