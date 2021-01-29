@@ -14,8 +14,15 @@ https://dev.mysql.com/doc/refman/5.7/en/comments.html
 参考实例：  
 https://mp.weixin.qq.com/s/84se5CxYlVT05bcw654wKg 这篇文章用到了上述的技巧绕过了Mod_Security
 
-2、可用&&代替and，如下图  
-![image](./0.png)
-
-3、可用true代替and 1=1以及用false代替and 1=2，如下图  
+2、寻找替代  
+2.1、可用&&代替and，如下图  
+![image](./0.png)  
+2.2、可用true代替and 1=1以及用false代替and 1=2，如下图  
 ![image](./1.png)
+
+3、通过注释分割关键字  
+```
+可用database/**/()代替database()
+```
+如下图  
+![image](./2.png)
