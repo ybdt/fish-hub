@@ -1,4 +1,4 @@
-# 1、报错注入查询数据库版本
+###### 1、报错注入查询数据库版本
 ```
 select session_id,command from sys.dm_exec_requests where session_id=12 or 1=@@VERSION;
 ```
