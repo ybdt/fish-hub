@@ -1,5 +1,7 @@
 shodan、zoomeye、fofa三大网络空间测绘引擎，zoomeye会每个月赠送10000条查询结果，故选择zoomeye
 
+zoomeye搜索关键词的获取：一个字符一个字符的输入，然后从备选中选择，否则关键词不对，可能搜索不到结果
+
 步骤1：  
 需要注册一个zoomeye账户来获取token
 
