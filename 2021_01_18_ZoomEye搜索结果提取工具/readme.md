@@ -9,4 +9,4 @@
 使用脚本zoomeye_ip_extract.py从搜索结果中提取ip信息
 
 亲测可用  
-![image](./a.png)
+![image](./pic/a.png)
