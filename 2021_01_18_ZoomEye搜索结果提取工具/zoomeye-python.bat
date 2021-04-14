@@ -1,1 +1,1 @@
-zoomeye search "D-Link DCS-2530L webcam http interface" -num 100 -save
+zoomeye search -num 20 -save port,service "网康下一代防火墙"
