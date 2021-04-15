@@ -15,4 +15,4 @@ zoomeye搜索关键词的获取：一个字符一个字符的输入，然后从�
 使用脚本zoomeye_ip_extract.py从json文件中提取ip、端口到文件ip.txt中
 
 亲测可用  
-![image](./pic/a.png)
+![image](./pic/0.png)
