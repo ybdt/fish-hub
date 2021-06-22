@@ -1,4 +1,4 @@
-1、web在线文件目录扫描  
+1、web文件目录扫描工具+[字典项目dict-hub](https://github.com/ybdt/dict-hub)  
 https://github.com/maurosoria/dirsearch  
 https://github.com/ffuf/ffuf
 
