@@ -1,3 +1,7 @@
+## 待尝试思路记录
+1、身份隐藏，可参考：  
+https://mp.weixin.qq.com/s/-DqGsjqgxC5MUf4poqC5XQ
+
 ```
 用过的较好的Web安全学习资源：
 [https://portswigger.net/web-security](https://portswigger.net/web-security)（包含原理讲解和动手实验，完全免费）
