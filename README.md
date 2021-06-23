@@ -1,5 +1,5 @@
 # Web打点
-## 1、攻击资产收集
+## 1、攻击面收集
 ### 1.1 子域名收集  
 https://fofa.so/  
 https://phpinfo.me/domain/  
