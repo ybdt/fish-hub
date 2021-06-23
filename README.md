@@ -12,8 +12,11 @@ https://fp.shuziguanxing.com/#/
 ### 1.3 web文件目录收集
 [dirsearch](https://github.com/maurosoria/dirsearch)或[ffuf](https://github.com/ffuf/ffuf)结合[字典项目dict-hub](https://github.com/ybdt/dict-hub)  
 
-
 ## 2、目标信息收集
 ### 2.1 通过乌云漏洞库收集账号密码    
 https://wooyun.x10sec.org/  
 http://wy.zone.ci/  
+
+# 社工钓鱼
+
+# 近源渗透
