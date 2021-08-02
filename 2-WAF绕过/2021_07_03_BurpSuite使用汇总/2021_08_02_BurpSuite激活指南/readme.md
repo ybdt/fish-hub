@@ -17,4 +17,4 @@ java.exe -jar .\burp-loader-keygen-2020_2_1.jar
 如下图  
 ![image](./pic/1.png)  
 2、直接执行start_en-us.vbs启动burp  
-接下来复制粘贴密钥即可
+3、最后对应着复制粘贴密钥即可
