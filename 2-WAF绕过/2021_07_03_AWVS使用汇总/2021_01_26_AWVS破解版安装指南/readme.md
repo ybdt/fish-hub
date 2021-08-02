@@ -6,4 +6,4 @@ linux下破解指南：
 
 3.复制license_info.json到“/home/acunetix/.acunetix/data/license/”下覆盖同名文件
 
-下载地址：https://www.shungg.cn/?keyword=AWVS
+下载地址：https://www.shungg.cn/288.html
