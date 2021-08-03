@@ -5,7 +5,7 @@
 ![image](./pic/1.png)  
 在用户类别下，文本编辑器->文件，如下图  
 ![image](./pic/2.png)  
-下拉到Exclude处，添加  
+下拉到Exclude处，当想排除全部的js文件时，添加  
 ```
 **/*.js
 ```
