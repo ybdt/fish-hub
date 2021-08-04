@@ -15,7 +15,7 @@ function check_filetype($s_name)
 	return true;
 }
 ```
-绕过方式：
+如上只限制了php、exe、js，绕过方式：
 ```
 php5或者php.或者php::$DATA
 ```
