@@ -8,3 +8,6 @@ C:\Users\ybdt\Desktop\webroot\ *upload*.php
 ```
 如下图  
 ![image](./pic/1.png)  
+可使用everything的导出功能：文件->导出  
+导出后配合脚本copy_file_to_dst.py可批量将目标文件拷贝到桌面下的upload文件夹下，如下图  
+![image](./pic/2.png)  
