@@ -3,7 +3,7 @@
 ```
 du -h --max-depth=1
 ```
-使用如下命令选择性打包
+再使用如下命令选择性打包
 ```
 首选：tar -jcvf b.tar.bz2
 不支持bz2的时候，再使用：tar -zcvf b.tar.gz --exclude=./data --exclude=./tmp --exclude=./log --exclude=./queue ./*
