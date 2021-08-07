@@ -3,4 +3,7 @@
 ```
 du -h --max-depth=1
 ```
-然后选择性下载
+使用如下命令选择性打包
+```
+tar -zcvf b.tar.gz --exclude=./data --exclude=./tmp ./*
+```
