@@ -6,3 +6,6 @@ https://cdndown.tongda2000.com/oa/2019/TDOA11.7.exe
 可下载11.7版本
 ```
 如果这个办法不行，就得考虑去第3方下载站下载了
+
+启发链接：  
+https://qcsdn.com/q/a/6122611.html
