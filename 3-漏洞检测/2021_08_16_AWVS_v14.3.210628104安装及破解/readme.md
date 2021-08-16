@@ -12,10 +12,23 @@
 1、破解补丁下载地址：https://www.fahai.org/index.php/archives/132/
 2、解压缩并拷贝内容到指定目录下：sudo cp /home/kali/Desktop/Aw14_Patch/* /home/acunetix/.acunetix/data/license
 ```
-
 访问[https://127.0.0.1:3443/](https://127.0.0.1:3443/)，点击About，界面如下  
 ![image](./pic/1.png)  
-### 0x03 升级内容
+### 0x03 破解过程补充
+```
+问题（只看了版本界面，没执行扫描任务，就以为破解成功，大意了~）如下：
+1、执行完上述破解过程后，添加目标->开始扫描会报错
+2、关闭后再次打开会显示破解之前的界面
+
+解决（经排查发现/home/acunetix/.acunetix/data/license/下的license_info.json被删除后会自动创建）如下：
+1、破解补丁下载地址：https://www.fahai.org/index.php/archives/132/
+1、断开网络并关闭Acunetix服务：sudo systemctl stop Acunetix
+2、解压缩并拷贝内容到指定目录下：sudo cp /home/kali/Desktop/Aw14_Patch/* /home/acunetix/.acunetix/data/license
+4、修改文件属主：sudo chown acunetix:acunetix /home/acunetix/.acunetix/data/license/*
+```
+访问[https://127.0.0.1:3443/](https://127.0.0.1:3443/)，能够成功执行扫描任务，界面如下  
+![image](./pic/2.png)  
+### 升级内容
 ```
 1、我之前的版本是v13.0.200217097，从之前的版本到v14.3.210628104共新增142个漏洞检查如下：
 
