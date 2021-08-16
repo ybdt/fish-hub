@@ -1,6 +1,9 @@
 截止到2021/08/16，AWVS v14.3.210628104是最新版  
 参考：https://www.acunetix.com/support/build-history/  
 
+还可尝试docker版本  
+参考链接：https://blog.zygd.site/AWVS14%20Docker.html#AWVS14-Docker  
+
 ### 0x01 安装过程
 ```
 1、安装包下载地址：https://www.fahai.org/index.php/archives/126/
