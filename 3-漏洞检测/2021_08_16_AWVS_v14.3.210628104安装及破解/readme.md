@@ -28,7 +28,7 @@
 ```
 访问[https://127.0.0.1:3443/](https://127.0.0.1:3443/)，能够成功执行扫描任务，界面如下  
 ![image](./pic/2.png)  
-### 升级内容
+### 0x04 升级内容
 ```
 1、我之前的版本是v13.0.200217097，从之前的版本到v14.3.210628104共新增142个漏洞检查如下：
 
@@ -176,6 +176,6 @@ New check for Gitlab open user registration
 New check for Gitlab user disclosure via GraphQL
 ```
 
-参考链接：  
+### 0x05 参考链接：  
 https://www.fahai.org/index.php/archives/126/  
 https://www.fahai.org/index.php/archives/132/  
