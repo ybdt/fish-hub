@@ -30,7 +30,7 @@
 ![image](./pic/2.png)  
 ### 0x04 升级内容
 ```
-1、我之前的版本是v13.0.200217097，从之前的版本到v14.3.210628104共新增142个漏洞检查如下：
+1、我之前的版本是v13.0.200217097，从之前的版本到v14.3.210628104涉及大量的新增功能、bug修复、功能更新、新增漏洞检查，其中漏洞检查新增高达142个，如下：
 
 New check for Weak key used to sign cookie in Play framework
 JavaScript Library Audit now supports TinyMCE
