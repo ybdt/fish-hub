@@ -14,8 +14,6 @@ php中有一类特殊的方法叫魔术方法，这里我们着重关注以下�
 序列化函数serialize()会检查类中是否存在一个魔术方法__sleep()，如果存在，该方法会先被调用，然后再执行序列化操作  
 反序列化函数unserialize()会检查类中是否存在一个魔术方法__wakeup()，如果存在，该方法会先被调用，然后再执行反序列化操作  
 
-参考链接：  
-https://www.php.net/manual/zh/language.oop5.magic.php  
 测试代码如下  
 ```
 <?php
@@ -88,3 +86,6 @@ __wakeup()
 # 参考链接
 https://chybeta.github.io/2017/06/17/%E6%B5%85%E8%B0%88php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/  
 https://xz.aliyun.com/t/6753
+
+参考链接：  
+https://www.php.net/manual/zh/language.oop5.magic.php  
