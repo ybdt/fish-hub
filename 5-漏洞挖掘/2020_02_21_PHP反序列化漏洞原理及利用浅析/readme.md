@@ -8,21 +8,49 @@ firefox
 当传给 unserialize() 的参数可控时，我们可以通过传入一个精心构造的序列化字符串，从而控制对象内部的变量甚至是函数。
 
 ### 0x03 反序列化漏洞用到的魔术方法
-```
-php中有一类特殊的方法叫魔术方法，这里我们着重关注以下几个：
-构造函数__construct()：创建对象时自动调用，但在unserialize()时不会自动调用
-析构函数__destruct()：销毁对象时自动调用
-序列化函数serialize()会检查类中是否存在一个魔术方法__sleep()，如果存在，该方法会先被调用，然后再执行序列化操作
-反序列化函数unserialize()会检查类中是否存在一个魔术方法__wakeup()，如果存在，该方法会先被调用，然后再执行反序列化操作
+php中有一类特殊的方法叫魔术方法，这里我们着重关注以下几个：  
+构造函数__construct()：创建对象时自动调用，但在unserialize()时不会自动调用  
+析构函数__destruct()：销毁对象时自动调用  
+序列化函数serialize()会检查类中是否存在一个魔术方法__sleep()，如果存在，该方法会先被调用，然后再执行序列化操作  
+反序列化函数unserialize()会检查类中是否存在一个魔术方法__wakeup()，如果存在，该方法会先被调用，然后再执行反序列化操作  
 
-参考链接：
-https://www.php.net/manual/zh/language.oop5.magic.php
-```
-__wakeup() ：如前所提，unserialize()前自动调用。  
+参考链接：  
+https://www.php.net/manual/zh/language.oop5.magic.php  
 测试代码如下  
-![image](./4.png)  
+```
+<?php
+class YBDT {
+    public $test = "123";
+
+    function __wakeup() {
+        echo "Code here was execute in __wakeup()";
+        echo "<br/>";
+    }
+
+    function __construct() {
+        echo "Code here was execute in __construct()";
+        echo "<br/>";
+    }
+
+    function __destruct() {
+        echo "Code here was execute in __destruct()";
+        echo "<br/>";
+    }
+}
+$ybdt = new YBDT();
+$serialized_obj = serialize($ybdt);
+print_r($serialized_obj);
+```
 输出如下  
-![image](./5.png)  
+```
+Code here was execute in __construct()
+O:4:"YBDT":1:{s:4:"test";s:3:"123";}Code here was execute in __destruct()
+```
+如下图  
+![image](./a.png)  
+
+
+
 
 ## 利用场景
 __wakeup()
