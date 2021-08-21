@@ -5,3 +5,6 @@
 2、使用浏览器访问修改后的链接，ctrl+s可将当前页面内容保存到本地，默认命名为all.json
 3、借助工具FOFO-Extractor.py，执行命令：python3.exe .\FOFO-Extractor.py -f all.json，可获取包含ip和url的文件ip.txt和url.txt
 ```
+
+### 参考链接
+https://blog.csdn.net/wuyou1995/article/details/105592102
