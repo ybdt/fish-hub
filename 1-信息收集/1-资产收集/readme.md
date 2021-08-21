@@ -13,3 +13,9 @@ https://github.com/lijiejie/subDomainsBrute
 2、通过爱站进行ip反查域名
 https://dns.aizhan.com/111.7.74.29/
 ```
+### 3、Web文件目录收集
+```
+dirsearch：https://github.com/maurosoria/dirsearch
+ffuf]：https://github.com/ffuf/ffuf
+结合字典项目dict-hub：https://github.com/ybdt/dict-hub
+```
