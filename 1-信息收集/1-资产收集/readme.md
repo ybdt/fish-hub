@@ -10,8 +10,9 @@ https://github.com/lijiejie/subDomainsBrute
 ### 2、旁站收集
 ```
 1、解析出子域名的ip，使用nmap对每一个ip进行全端口扫描
-2、通过爱站进行ip反查域名
-https://dns.aizhan.com/111.7.74.29/
+2、通过爱站进行ip反查域名：https://dns.aizhan.com/
+3、通过微步在线：https://x.threatbook.cn/
+4、通过Dnsdb：https://dnsdb.io/zh-cn/
 ```
 ### 3、Web文件目录收集
 ```
