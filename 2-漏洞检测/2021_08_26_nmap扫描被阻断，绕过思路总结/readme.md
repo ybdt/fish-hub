@@ -26,13 +26,13 @@ nmap --data-string "ybdt"
 nmap --data-length 25 192.168.1.1
 需要注意：不能结合其他两个--data选项一起使用
 ```
-### 4、诱饵扫描
+### 4、诱饵扫描（使用会失败）
 ```
 -D <decoy1,decoy2[,ME],...>: Cloak a scan with decoys
 
 nmap –D RND:10 192.168.1.1
 或
-nmap –D decoy1,decoy2,decoy3(诱饵主机) 192.168.1.1
+nmap –D 100.100.100.100,200.200.200.200 192.168.1.1
 ```
 ### 5、随机顺序
 ```
