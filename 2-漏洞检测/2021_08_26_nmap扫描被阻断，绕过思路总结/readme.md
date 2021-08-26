@@ -3,25 +3,28 @@
 -f; --mtu <val>: fragment packets (optionally w/given MTU)
 
 nmap --mtu 16 192.168.1.1
-需要注意，--mtu的值需要是8的整数倍，以及太小的话有些路由会丢弃
+需要注意：--mtu的值需要是8的整数倍，以及太小的话有些路由会丢弃
 ```
 ### 2、附加随机16进制字符串
 ```
 --data <hex string>: Append a custom payload to sent packets
 
 nmap --data 79626474
+需要注意：不能结合其他两个--data选项一起使用
 ```
 ### 2、附加随机ASCII字符串
 ```
 --data-string <string>: Append a custom ASCII string to sent packets
 
 nmap --data-string "ybdt"
+需要注意：不能结合其他两个--data选项一起使用
 ```
 ### 3、附加随机数据
 ```
 --data-length <num>: Append random data to sent packets
 
 nmap --data-length 25 192.168.1.1
+需要注意：不能结合其他两个--data选项一起使用
 ```
 ### 4、诱饵扫描
 ```
