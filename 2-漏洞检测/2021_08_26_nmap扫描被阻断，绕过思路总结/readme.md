@@ -1,0 +1,45 @@
+### 1、数据包分片
+```
+-f; --mtu <val>: fragment packets (optionally w/given MTU)
+
+nmap --mtu 16 192.168.1.1
+需要注意，--mtu的值需要是8的整数倍，以及太小的话有些路由会丢弃
+```
+### 2、附加随机16进制字符串
+```
+--data <hex string>: Append a custom payload to sent packets
+
+nmap --data 79626474
+```
+### 2、附加随机ASCII字符串
+```
+--data-string <string>: Append a custom ASCII string to sent packets
+
+nmap --data-string "ybdt"
+```
+### 3、附加随机数据
+```
+--data-length <num>: Append random data to sent packets
+
+nmap --data-length 25 192.168.1.1
+```
+### 4、诱饵扫描
+```
+-D <decoy1,decoy2[,ME],...>: Cloak a scan with decoys
+
+nmap –D RND:10 192.168.1.1
+或
+nmap –D decoy1,decoy2,decoy3(诱饵主机) 192.168.1.1
+```
+### 5、随机顺序
+```
+nmap命令帮助中没看到此选项
+
+nmap --randomize-hosts 192.168.1.1
+```
+### 6、空闲扫描
+```
+nmap命令帮助中没看到此选项
+
+nmap –P0 -sI zombie(僵尸) 192.168.1.1
+```
