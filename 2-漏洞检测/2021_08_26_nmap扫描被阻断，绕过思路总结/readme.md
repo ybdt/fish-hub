@@ -43,3 +43,7 @@ nmap命令帮助中没看到此选项
 
 nmap –P0 -sI zombie(僵尸) 192.168.1.1
 ```
+### 参考链接
+http://www.safe6.cn/article/41  
+https://www.freebuf.com/articles/system/233678.html  
+http://www.2cto.com/article/201604/498533.html  
