@@ -2,7 +2,7 @@
 ```
 --scan-delay 500ms
 ```
-
+### 其他IPS绕过方式
 1、数据包分片
 ```
 -f; --mtu <val>: fragment packets (optionally w/given MTU)
