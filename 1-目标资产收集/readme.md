@@ -6,9 +6,3 @@
 3、通过微步在线：https://x.threatbook.cn/
 4、通过Dnsdb：https://dnsdb.io/zh-cn/
 ```
-### 3、Web文件目录收集
-```
-dirsearch：https://github.com/maurosoria/dirsearch
-ffuf：https://github.com/ffuf/ffuf
-结合字典项目dict-hub：https://github.com/ybdt/dict-hub
-```
