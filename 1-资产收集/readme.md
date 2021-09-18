@@ -1,6 +1,9 @@
 # 1、子域旁站收集
 【子域收集】[https://fofa.so](https://fofa.so)，用法：domain="wps.cn"  
 【子域收集】[https://phpinfo.me/domain](https://phpinfo.me/domain)，用法：直接输入根域即可  
+【子域收集】[https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)，用法：python3 ./subDomainsBrute/subDomainsBrute.py -o wps.cn  
+【子域收集】[https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)，用法：sudo ./ksubdomain -d wps.cn -full -o wps_subdomain.txt  
+【子域收集】[https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)，用法：python3 ./oneforall.py --target wps.cn run  
 【旁站收集】nmap扫描主域ip的全端口，用法：nmap -p1-65535  
 【旁站收集】[https://dns.aizhan.com](https://dns.aizhan.com)，用法：直接输入ip即可  
 
