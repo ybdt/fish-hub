@@ -8,5 +8,24 @@
 【aizhan旁站收集】[https://dns.aizhan.com](https://dns.aizhan.com)，用法：直接输入ip即可  
 
 # 2、其他根域收集
+【1-ICP备案收集根域】，用法如下：  
+```
+ICP备案查询地址：https://beian.miit.gov.cn
+
+输入域名如wps.cn，可查询所属公司，再通过所属公司查询所有根域名
+
+收集根域
+1、Chrome下F12，点击Network->All可查看全部请求及响应
+2、点击查询，可在右侧看到向/queryByCondition发起请求及对应的响应
+3、将响应保存到本地，通过脚本“ICP备案提取主域信息.py”提取根域
+```
+【2-企查查收集控股子公司】，用法：通过股权穿透图收集目标企业子公司  
+【3-Whois收集关联根域及邮箱】  
+【4-SSL证书收集关联根域】  
+【5-DNS解析收集关联根域】  
+【6-Web配置收集关联根域】  
 
 # 3、全量资产收集
+
+# 参考链接
+【红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone】https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
