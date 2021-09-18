@@ -17,10 +17,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 2、点击查询，可在右侧看到向/queryByCondition发起请求及对应的响应  
 3、将响应保存到本地，通过脚本[ICP备案提取主域信息.py](./附件/1-ICP备案收集根域/ICP备案提取主域信息.py)提取根域  
 ```
-【2-企查查收集控股子公司】
-```
-通过股权穿透图收集目标企业子公司  
-```
+【2-企查查收集控股子公司】通过股权穿透图收集目标企业子公司  
 【3-Whois收集关联根域及邮箱】  
 【4-SSL证书收集关联根域】  
 【5-DNS解析收集关联根域】  
@@ -32,10 +29,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 fofa获取目标全部资产，再通过[fofa-Extractor.py](./附件/2-全量资产收集/fofa-Extractor.py)提取出url和ip  
 直接使用API的话，想显示全部数据，需要在API后面添加：&size=10000&full=true  
 ```
-【2-masscan获取目标全量资产】
-```
-masscan快速扫描目标c段资产，再通过[masscan-Live-Detect.py](./附件/2-全量资产收集/masscan-Live-Detect.py)从扫描结果中提取出存活的端口资产  
-```
+【2-masscan获取目标全量资产】masscan快速扫描目标c段资产，再通过[masscan-Live-Detect.py](./附件/2-全量资产收集/masscan-Live-Detect.py)从扫描结果中提取出存活的端口资产  
 
 # 参考链接
 【红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone】https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
