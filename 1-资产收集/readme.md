@@ -24,6 +24,8 @@ ICP备案查询地址：https://beian.miit.gov.cn
 【6-Web配置收集关联根域】  
 
 # 3、全量资产收集
+【1-提取fofa搜索后的全量资产】[]()，用法：  
+【2-masscan快速扫描大量资产】
 
 # 参考链接
 【红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone】https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
