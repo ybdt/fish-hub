@@ -1,5 +1,10 @@
 同事扫到一个Apache Spark未授权页面，以此做为开始  
 
+总结几个大的注意点：  
+1、Exploit.jar链接不能是github，会获取不到  
+2、反弹shell需要base64编码  
+3、base64编码后需要修改Exploit.jar  
+
 目标地址：  http://182.61.xxx.xxx:8080/  
 网上搜索针对Apache Spark的漏洞复现，直接打失败，开始调试之旅  
 
