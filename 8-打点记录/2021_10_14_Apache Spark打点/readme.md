@@ -80,3 +80,9 @@ http://www.jackson-t.ca/runtime-exec-payloads.html
 ![image](./pic/5.png)  
 
 拿到目标测试后，成功拿到shell
+
+参考链接：  
+https://www.cnblogs.com/mutudou/p/14685277.html  
+https://medium.com/@Wh0ale/apache-spark-%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%BC%8F%E6%B4%9E-ada9eb02af65  
+https://github.com/vulhub/vulhub/tree/master/spark/unacc  
+https://github.com/aRe00t/rce-over-spark/blob/master/Exploit.java  
