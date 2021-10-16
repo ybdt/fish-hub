@@ -1,3 +1,6 @@
+### 坑点总结：
+1、漏洞利用时需考虑目标上是否存在反弹shell的程序
+
 nmap扫描某ip的C段，用时大概19h，对识别到的指纹信息依次查看，查看到如下信息
 ```
 5005/tcp  open  jdwp       Java Debug Wire Protocol (Reference Implementation) version 1.8 1.8.0_191
