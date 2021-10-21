@@ -28,7 +28,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 【5-subfinder子域收集】  
 [https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)，用法：subfinder -dL rootDomain.txt -v -o subDomain.txt  
 
-# 3、全量资产收集
+# 3、C段收集
 【1-fofa获取目标全量资产】
 ```
 fofa获取目标全部资产，再通过[fofa-Extractor.py](./附件/2-全量资产收集/fofa-Extractor.py)提取出url和ip  
