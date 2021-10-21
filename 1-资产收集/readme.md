@@ -27,7 +27,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 导出工具用法：  
 ## 【3-subDomainsBrute子域收集】  
 [https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)  
-子域收集用法：python3 ./subDomainsBrute.py -o wps.cn  
+子域收集用法：python3 ./subDomainsBrute.py -o subdomain.txt wps.cn  
 ## 【4-ksubdomain子域收集】  
 [https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)  
 子域收集用法：sudo ./ksubdomain -d wps.cn -full -o wps_subdomain.txt  
