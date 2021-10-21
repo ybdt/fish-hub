@@ -13,7 +13,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 [https://fofa.so](https://fofa.so)  
 子域收集用法：domain="wps.cn"  
 结果导出：可使用工具：[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现导出的结果不完整，改用自己工具：[fofa-Extractor.py](./附件/fofa-Extractor.py)  
-导出工具用法：  
+导出工具用法：访问API并在链接后面添加：&size=10000&full=true，保存到本地后，通过工具提取出url.txt和ip.txt  
 ## 【2-phpinfo.me子域收集】  
 [https://phpinfo.me/domain](https://phpinfo.me/domain)  
 子域收集用法：直接输入根域即可  
