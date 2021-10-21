@@ -1,4 +1,4 @@
-# 1、子域旁站收集
+# 1、子域收集
 【1-fofa子域收集】[https://fofa.so](https://fofa.so)，用法：domain="wps.cn"  
 【2-phpinfo.me子域收集】[https://phpinfo.me/domain](https://phpinfo.me/domain)，用法：直接输入根域即可  
 【3-subDomainsBrute子域收集】[https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)，用法：python3 ./subDomainsBrute.py -o wps.cn  
