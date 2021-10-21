@@ -15,26 +15,26 @@ ICP备案查询地址：https://beian.miit.gov.cn
 【6-Web配置收集关联根域】  
 
 # 2、子域收集
-### 【1-fofa子域收集】  
+## 【1-fofa子域收集】  
 [https://fofa.so](https://fofa.so)  
 子域收集用法：domain="wps.cn"  
 结果导出可使用工具：[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现导出的结果不完整，改用自己工具：[fofa-Extractor.py](./附件/fofa-Extractor.py)  
 导出工具用法：  
-### 【2-phpinfo.me子域收集】  
+## 【2-phpinfo.me子域收集】  
 [https://phpinfo.me/domain](https://phpinfo.me/domain)  
 子域收集用法：直接输入根域即可  
 结果导出可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
 导出工具用法：  
-### 【3-subDomainsBrute子域收集】  
+## 【3-subDomainsBrute子域收集】  
 [https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)  
 子域收集用法：python3 ./subDomainsBrute.py -o wps.cn  
-### 【4-ksubdomain子域收集】  
+## 【4-ksubdomain子域收集】  
 [https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)  
 子域收集用法：sudo ./ksubdomain -d wps.cn -full -o wps_subdomain.txt  
-### 【5-OneForAll子域收集】  
+## 【5-OneForAll子域收集】  
 [https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)  
 子域收集用法：sudo python3 ./oneforall.py --target wps.cn run  
-### 【5-subfinder子域收集】  
+## 【5-subfinder子域收集】  
 [https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
 子域收集用法：subfinder -dL rootDomain.txt -v -o subDomain.txt  
 
@@ -46,7 +46,7 @@ fofa获取目标全部资产，再通过[fofa-Extractor.py](./附件/2-全量资
 ```
 【2-masscan获取目标全量资产】masscan快速扫描目标c段资产，再通过[masscan-Live-Detect.py](./附件/2-全量资产收集/masscan-Live-Detect.py)从扫描结果中提取出存活的端口资产  
 
-4、参考链接
+# 4、参考链接
 【红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone】https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
 【fofa api相关】https://blog.csdn.net/wuyou1995/article/details/105592102  
 【fofa api相关】https://classic.fofa.so/api  
