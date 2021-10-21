@@ -18,12 +18,12 @@ ICP备案查询地址：https://beian.miit.gov.cn
 ## 【1-fofa子域收集】  
 [https://fofa.so](https://fofa.so)  
 子域收集用法：domain="wps.cn"  
-结果导出可使用工具：[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现导出的结果不完整，改用自己工具：[fofa-Extractor.py](./附件/fofa-Extractor.py)  
+结果导出：可使用工具：[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现导出的结果不完整，改用自己工具：[fofa-Extractor.py](./附件/fofa-Extractor.py)  
 导出工具用法：  
 ## 【2-phpinfo.me子域收集】  
 [https://phpinfo.me/domain](https://phpinfo.me/domain)  
 子域收集用法：直接输入根域即可  
-结果导出可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
+结果导出：可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
 导出工具用法：  
 ## 【3-subDomainsBrute子域收集】  
 [https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)  
@@ -34,9 +34,11 @@ ICP备案查询地址：https://beian.miit.gov.cn
 ## 【5-OneForAll子域收集】  
 [https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)  
 子域收集用法：sudo python3 ./oneforall.py --target wps.cn run  
+结果导出：工具会自动导出结果到OneForAll-master/results/下  
 ## 【5-subfinder子域收集】  
 [https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
-子域收集用法：subfinder -dL rootDomain.txt -v -o subDomain.txt  
+子域收集用法：subfinder -dL domain.txt -v -o subDomain.txt  
+结果导出：结果会输出到控制台及subDomain.txt中  
 
 # 3、C段收集
 【1-fofa获取目标全量资产】
