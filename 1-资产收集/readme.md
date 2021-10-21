@@ -1,11 +1,4 @@
-# 1、子域收集
-【1-fofa子域收集】[https://fofa.so](https://fofa.so)，用法：domain="wps.cn"  
-【2-phpinfo.me子域收集】[https://phpinfo.me/domain](https://phpinfo.me/domain)，用法：直接输入根域即可  
-【3-subDomainsBrute子域收集】[https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)，用法：python3 ./subDomainsBrute.py -o wps.cn  
-【4-ksubdomain子域收集】[https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)，用法：sudo ./ksubdomain -d wps.cn -full -o wps_subdomain.txt  
-【5-OneForAll子域收集】[https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)，用法：sudo python3 ./oneforall.py --target wps.cn run  
-
-# 2、其他根域收集
+# 1、根域收集
 【1-ICP备案收集根域】  
 ```
 ICP备案查询地址：https://beian.miit.gov.cn  
@@ -20,6 +13,20 @@ ICP备案查询地址：https://beian.miit.gov.cn
 【4-SSL证书收集关联根域】  
 【5-DNS解析收集关联根域】  
 【6-Web配置收集关联根域】  
+
+# 2、子域收集
+【1-fofa子域收集】  
+[https://fofa.so](https://fofa.so)，用法：domain="wps.cn"  
+【2-phpinfo.me子域收集】  
+[https://phpinfo.me/domain](https://phpinfo.me/domain)，用法：直接输入根域即可  
+【3-subDomainsBrute子域收集】  
+[https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)，用法：python3 ./subDomainsBrute.py -o wps.cn  
+【4-ksubdomain子域收集】  
+[https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)，用法：sudo ./ksubdomain -d wps.cn -full -o wps_subdomain.txt  
+【5-OneForAll子域收集】  
+[https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)，用法：sudo python3 ./oneforall.py --target wps.cn run  
+【5-subfinder子域收集】  
+[https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)，用法：subfinder -dL rootDomain.txt -v -o subDomain.txt  
 
 # 3、全量资产收集
 【1-fofa获取目标全量资产】
