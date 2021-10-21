@@ -25,14 +25,18 @@ ICP备案查询地址：https://beian.miit.gov.cn
 用法：直接输入根域即可  
 结果导出可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
 导出工具用法：  
-【3-subDomainsBrute子域收集】  
-[https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)，用法：python3 ./subDomainsBrute.py -o wps.cn  
-【4-ksubdomain子域收集】  
-[https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)，用法：sudo ./ksubdomain -d wps.cn -full -o wps_subdomain.txt  
-【5-OneForAll子域收集】  
-[https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)，用法：sudo python3 ./oneforall.py --target wps.cn run  
-【5-subfinder子域收集】  
-[https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)，用法：subfinder -dL rootDomain.txt -v -o subDomain.txt  
+### 【3-subDomainsBrute子域收集】  
+[https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)  
+用法：python3 ./subDomainsBrute.py -o wps.cn  
+### 【4-ksubdomain子域收集】  
+[https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)  
+用法：sudo ./ksubdomain -d wps.cn -full -o wps_subdomain.txt  
+### 【5-OneForAll子域收集】  
+[https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)  
+用法：sudo python3 ./oneforall.py --target wps.cn run  
+### 【5-subfinder子域收集】  
+[https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
+用法：subfinder -dL rootDomain.txt -v -o subDomain.txt  
 
 # 3、C段收集
 【1-fofa获取目标全量资产】
