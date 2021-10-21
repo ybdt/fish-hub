@@ -15,12 +15,12 @@ ICP备案查询地址：https://beian.miit.gov.cn
 【6-Web配置收集关联根域】  
 
 # 2、子域收集
-【1-fofa子域收集】  
+### 【1-fofa子域收集】  
 [https://fofa.so](https://fofa.so)  
 用法：domain="wps.cn"  
 结果导出可使用工具：[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现导出的结果不完整，改用自己工具：[fofa-Extractor.py](./附件/fofa-Extractor.py)  
 导出工具用法：  
-【2-phpinfo.me子域收集】  
+### 【2-phpinfo.me子域收集】  
 [https://phpinfo.me/domain](https://phpinfo.me/domain)  
 用法：直接输入根域即可  
 结果导出可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
