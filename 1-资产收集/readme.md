@@ -17,6 +17,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 # 2、子域收集
 【1-fofa子域收集】  
 [https://fofa.so](https://fofa.so)，用法：domain="wps.cn"  
+结果导出可使用工具：[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)  
 【2-phpinfo.me子域收集】  
 [https://phpinfo.me/domain](https://phpinfo.me/domain)，用法：直接输入根域即可  
 【3-subDomainsBrute子域收集】  
