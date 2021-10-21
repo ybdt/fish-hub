@@ -35,7 +35,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 [https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)  
 子域收集用法：sudo python3 ./oneforall.py --target wps.cn run  
 结果导出：工具会自动导出结果到OneForAll-master/results/下  
-## 【5-subfinder子域收集】  
+## 【6-subfinder子域收集】  
 [https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
 子域收集用法：subfinder -dL domain.txt -v -o subDomain.txt  
 结果导出：结果会输出到控制台及subDomain.txt中  
