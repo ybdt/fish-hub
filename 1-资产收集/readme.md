@@ -47,6 +47,6 @@ fofa获取目标全部资产，再通过[fofa-Extractor.py](./附件/2-全量资
 【2-masscan获取目标全量资产】masscan快速扫描目标c段资产，再通过[masscan-Live-Detect.py](./附件/2-全量资产收集/masscan-Live-Detect.py)从扫描结果中提取出存活的端口资产  
 
 # 4、参考链接
-【红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone】https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
-【fofa api相关】https://blog.csdn.net/wuyou1995/article/details/105592102  
-【fofa api相关】https://classic.fofa.so/api  
+红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone：https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
+fofa api相关：https://blog.csdn.net/wuyou1995/article/details/105592102  
+fofa api相关：https://classic.fofa.so/api  
