@@ -1,5 +1,5 @@
 # 0x01 项目介绍
-专注于红队评估中的Web漏洞检测
+专注于红队评估中外网及内网的Web漏洞检测
 
 # 0x02 优秀项目
 【信息收集记录】https://github.com/r0eXpeR/GetInfo  
