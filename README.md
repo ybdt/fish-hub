@@ -1,5 +1,5 @@
 # 0x01 项目介绍
-本项目专注于红队行动中的打点
+专注于红队评估中的Web打点
 
 # 0x02 优秀项目
 【信息收集记录】https://github.com/r0eXpeR/GetInfo  
