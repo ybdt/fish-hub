@@ -31,7 +31,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 [https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
 用法：./subfinder -dL ./input.txt -v -o ./subfinder_output.txt  
 # 3、C段收集
-【1-nmap C段收集】
+## 【1-nmap C段收集】
 查询到某个子域ip和目标组织位于同一所城市，可考虑收集C段  
 用法：nmap -Pn -v -sS -sV -sC -O --traceroute -p1-65535 -oN xx.xx.xx.0.txt -oX xx.xx.xx.0.xml xx.xx.xx.0/24  
 # 4、参考链接
