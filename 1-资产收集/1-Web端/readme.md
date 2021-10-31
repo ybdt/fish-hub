@@ -31,13 +31,9 @@ ICP备案查询地址：https://beian.miit.gov.cn
 [https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
 用法：./subfinder -dL ./input.txt -v -o ./subfinder_output.txt  
 # 3、C段收集
-【1-fofa获取目标全量资产】
-```
-fofa获取目标全部资产，再通过[fofa-Extractor.py](./附件/2-全量资产收集/fofa-Extractor.py)提取出url和ip  
-直接使用API的话，想显示全部数据，需要在API后面添加：&size=10000&full=true  
-```
-【2-masscan获取目标全量资产】masscan快速扫描目标c段资产，再通过[masscan-Live-Detect.py](./附件/2-全量资产收集/masscan-Live-Detect.py)从扫描结果中提取出存活的端口资产  
-
+【1-nmap C段收集】
+查询到某个子域ip和目标组织位于同一所城市，可考虑收集C段  
+用法：nmap -Pn -v -sS -sV -sC -O --traceroute -p1-65535 -oN xx.xx.xx.0.txt -oX xx.xx.xx.0.xml xx.xx.xx.0/24  
 # 4、参考链接
 红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone：https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
 fofa api相关：https://blog.csdn.net/wuyou1995/article/details/105592102  
