@@ -20,16 +20,16 @@ ICP备案查询地址：https://beian.miit.gov.cn
 结果导出：可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
 ## 【3-subDomainsBrute子域收集】
 [https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)  
-用法：python3 ./subDomainsBrute.py -o ./subDomainsBrute_output.txt bzrmyy.com.cn  
+用法：python3 ./subDomainsBrute.py -o ./subDomainsBrute-output.txt bzrmyy.com.cn  
 ## 【4-ksubdomain子域收集】
 [https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)  
-用法：sudo ./ksubdomain -d bzrmyy.com.cn -full -o ./ksubdomain_output.txt  
+用法：sudo ./ksubdomain -d bzrmyy.com.cn -full -o ./ksubdomain-output.txt  
 ## 【5-OneForAll子域收集】
 [https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)  
-用法：sudo python3 ./oneforall.py --targets ./input.txt run  
+用法：sudo python3 ./oneforall.py --targets ./domain-input.txt run  
 ## 【6-subfinder子域收集】
 [https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
-用法：./subfinder -dL ./input.txt -v -o ./subfinder_output.txt  
+用法：./subfinder -dL ./domain-input.txt -v -o ./subfinder-output.txt  
 # 3、C段收集
 ## 【1-nmap C段收集】
 查询到某个子域ip和目标组织位于同一所城市，可考虑收集C段  
