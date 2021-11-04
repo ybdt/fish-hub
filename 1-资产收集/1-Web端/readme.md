@@ -31,6 +31,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 # 4、目录收集
 ## 【1-dirsearch收集目录】
 [https://github.com/maurosoria/dirsearch](https://github.com/maurosoria/dirsearch)  
+# 5、JavaScript收集
 ## 【1-LinkFinder收集资产】
 [https://github.com/GerbenJavado/LinkFinder](https://github.com/GerbenJavado/LinkFinder)  
 # 4、参考链接
