@@ -1,5 +1,5 @@
-1、苹果手机和burp处于同一局域网中  
-2、为苹果手机配置http代理  
+1、手机端和电脑端处于同一局域网中  
+2、iphone端配置http代理  
 3、浏览器访问http://burp  
 4、点击右上角的CA Certificate，如下图  
 ![image](./pic/1.png)  
