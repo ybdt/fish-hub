@@ -11,7 +11,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 # 2、子域收集
 ## 【1-fofa收集子域】
 [https://fofa.so](https://fofa.so)  
-结果导出：之前使用工具：[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现导出的结果不完整，改用自己工具：[fofa-Extractor.py](./附件/fofa-Extractor.py)，工具用法：访问API并在链接后面添加：&size=10000&full=true，保存到本地后，通过工具提取出url.txt和ip.txt  
+结果导出：之前使用工具[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现fofa_viewer导出的结果不完整，改用自己工具[fofa-Extractor.py](./附件/fofa-Extractor.py)  
 ## 【2-phpinfo.me收集子域】
 [https://phpinfo.me/domain](https://phpinfo.me/domain)  
 结果导出：可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
