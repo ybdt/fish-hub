@@ -31,7 +31,10 @@ ICP备案查询地址：https://beian.miit.gov.cn
 # 4、目录收集
 ## 【1-dirsearch收集目录】
 [https://github.com/maurosoria/dirsearch](https://github.com/maurosoria/dirsearch)  
-# 5、参考链接
+# 5、优秀项目
+https://github.com/ffuf/ffuf  
+https://github.com/H4ckForJob/dirmap  
+# 6、参考链接
 红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone：https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
 fofa api相关：https://blog.csdn.net/wuyou1995/article/details/105592102  
 fofa api相关：https://classic.fofa.so/api  
