@@ -1,5 +1,5 @@
 # 1、JavaScript收集
-## 【1-LinkFinder收集资产】
+## [1-LinkFinder收集资产]
 [https://github.com/GerbenJavado/LinkFinder](https://github.com/GerbenJavado/LinkFinder)  
 # 2、APP
 APP获取：官网  
