@@ -14,3 +14,4 @@ https://fp.shuziguanxing.com/#/
 https://github.com/ShiHuang-ESec/EHole  
 https://github.com/EdgeSecurityTeam/EHole  
 https://github.com/winezer0/whatweb-plus  
+https://github.com/r0eXpeR/fingerprint  
