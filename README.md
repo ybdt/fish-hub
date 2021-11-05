@@ -10,4 +10,4 @@
 3.SSRF漏洞  
 4.SQLI  
 5.⽂件上传  
-6.hosts碰撞  
+6.HOSTS碰撞  
