@@ -31,10 +31,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 查询到某个子域ip和目标组织位于同一城市，可考虑收集目标IP全端口、目标IP半个C段、目标IP整个C段  
 坑1：上来就扫描整个C段，12小时候才发现，卡在第2台主机......  
 经验1：扫描开始后要观察一下扫描进度，确实是否有防火墙，不要挂到VPS上就不管了  
-# 5、优秀项目
-https://github.com/ffuf/ffuf  
-https://github.com/H4ckForJob/dirmap  
-# 6、参考链接
+# 5、参考链接
 红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone：https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
 fofa api相关：https://blog.csdn.net/wuyou1995/article/details/105592102  
 fofa api相关：https://classic.fofa.so/api  
