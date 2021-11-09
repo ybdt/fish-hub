@@ -1,2 +1,0 @@
-Unauthenticated_JIRA_CVEs_to_Exploit.xmind：脑图文件  
-Unauthenticated_JIRA_CVEs_to_Exploit.txt：从脑图中提取的文字
