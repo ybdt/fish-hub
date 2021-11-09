@@ -1,5 +1,5 @@
 # 1、根域收集
-## 【1-ICP备案收集根域】
+### 1-ICP备案收集根域
 ICP备案查询地址：https://beian.miit.gov.cn  
 输入根域名（如wps.cn）查询公司备案名  
 通过公司备案名查询公司全部备案根域名  
@@ -9,30 +9,30 @@ ICP备案查询地址：https://beian.miit.gov.cn
 2、点击查询，可在右侧看到向/queryByCondition发起请求及对应的响应  
 3、将响应保存到本地，通过脚本[ICP备案收集根域.py](./附件/ICP备案收集根域/ICP备案收集根域.py)批量提取  
 # 2、父子公司收集
-## 【1-天眼查收集根域】
+### 1-天眼查收集根域
 查看“股权穿透图”，收集目标企业的子公司及父公司  
 # 3、子域收集
-## 【1-fofa收集子域】
+### 1-fofa收集子域
 [https://fofa.so](https://fofa.so)  
 结果导出：之前使用工具[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现fofa_viewer导出的结果不完整，改用自己工具[fofa-Extractor.py](./附件/fofa-Extractor.py)  
-## 【2-phpinfo.me收集子域】
+### 2-phpinfo.me收集子域
 [https://phpinfo.me/domain](https://phpinfo.me/domain)  
 结果导出：可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
-## 【3-subDomainsBrute收集子域】
+### 3-subDomainsBrute收集子域
 [https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)  
-## 【4-ksubdomain收集子域】
+### 4-ksubdomain收集子域
 [https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)  
-## 【5-OneForAll收集子域】
+### 5-OneForAll收集子域
 [https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)  
-## 【6-subfinder收集子域】
+### 6-subfinder收集子域
 [https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
 # 4、C段收集
-## 【1-nmap收集C段】
+### 1-nmap收集C段
 查询到某个子域ip和目标组织位于同一城市，可考虑收集目标IP全端口、目标IP半个C段、目标IP整个C段  
 坑1：上来就扫描整个C段，12小时候才发现，卡在第2台主机......  
 经验1：扫描开始后要观察一下扫描进度，确实是否有防火墙，不要挂到VPS上就不管了  
 # 5、目录收集
-## 【1-dirsearch收集目录】
+### 1-dirsearch收集目录
 [https://github.com/maurosoria/dirsearch](https://github.com/maurosoria/dirsearch)  
 # 6、优秀项目
 https://github.com/ffuf/ffuf  
