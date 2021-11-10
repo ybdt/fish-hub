@@ -14,7 +14,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 2、点击查询，可在右侧看到向/queryByCondition发起请求及对应的响应  
 3、将响应保存到本地，通过脚本[ICP备案收集根域.py](./附件/ICP备案收集根域/ICP备案收集根域.py)批量提取  
 
-# 0x03-子域收集
+# 0x03-收集子域
 ### 1-fofa收集子域
 [https://fofa.so](https://fofa.so)  
 结果导出：之前使用工具[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现fofa_viewer导出的结果不完整，改用自己工具[fofa-Extractor.py](./附件/fofa-Extractor.py)  
@@ -30,7 +30,7 @@ ICP备案查询地址：https://beian.miit.gov.cn
 ### 6-subfinder收集子域
 [https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
 
-# 0x04-C段收集
+# 0x04-收集C段
 ### 1-nmap收集C段
 查询到某个子域ip和目标组织位于同一城市，可考虑收集目标IP全端口、目标IP半个C段、目标IP整个C段  
 坑1：上来就扫描整个C段，12小时候才发现，卡在第2台主机......  
