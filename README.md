@@ -16,4 +16,4 @@
 3.SSRF  
 4.RCE  
 5.SQLI  
-6.HOSTS碰撞  
+6.HOST碰撞  
