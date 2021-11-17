@@ -16,5 +16,5 @@ Kunyu(坤舆)：https://github.com/knownsec/Kunyu
 2.Web后台弱口令+⽂件上传  
 3.SSRF  
 4.RCE  
-5.SQLI  
+5.Web后台弱口令+SQLI  
 6.HOST碰撞  
