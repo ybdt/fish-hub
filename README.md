@@ -13,7 +13,7 @@
 # 0x03 当前Web打点有效方式（2021/11/17）
 1.VPN弱⼝令  
 2.Web后台弱口令+⽂件上传  
-3.RCE  
-4.SSRF漏洞  
+3.SSRF  
+4.RCE  
 5.SQLI  
 6.HOSTS碰撞  
