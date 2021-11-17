@@ -1,13 +1,19 @@
-# 0x01 项目介绍
-专注于红队评估中外网及内网的Web漏洞检测
+# 0x01 免责声明
+该项目下的方法及工具仅供学习交流及授权下使用，违者自行承担后果，请各位遵守《中华人民共和国网络安全法》！
 
-# 0x02 免责声明
-该项目仅供授权下使用或学习使用，禁止使用该项目进行违法操作，请各位遵守《中华人民共和国网络安全法》以及相应地方的法律法规，否则自行承担相关责任！
+# 0x02 项目介绍
+专注于红队评估中外网Web打点及内网Web攻击
 
-# 0x03 Web打点
-1.RCE/RCI(远程代码执⾏/远程命令注入)  
-2.VPN弱⼝令  
-3.SSRF漏洞  
-4.SQLI  
-5.⽂件上传  
+# 0x03 优秀项目
+【信息收集记录】https://github.com/r0eXpeR/GetInfo  
+【水泽】https://github.com/0x727/ShuiZe_0x727  
+【灯塔】https://github.com/TophantTechnology/ARL  
+【大宝剑】https://github.com/wgpsec/DBJ  
+
+# 0x04 当前Web打点有效方式（2021/11/17）
+1.VPN弱⼝令  
+2.Web后台弱口令+⽂件上传  
+3.RCE  
+4.SSRF漏洞  
+5.SQLI  
 6.HOSTS碰撞  
