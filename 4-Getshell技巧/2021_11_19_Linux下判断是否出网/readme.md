@@ -29,9 +29,11 @@ VPS上执行：tcpdump -i eth0 -n -v icmp|grep -i "length 93"
 受害机上执行：ping xx.dnslog.cn
 查看反连平台
 
-经测试，想要修改hosts，使用sudo是不行的：
+查看一下/etc/resolv.conf及/etc/hosts
+
+经测试，想要修改hosts，如下使用sudo是不行的：
 sudo echo "127.0.0.2 www.baidu.com" >> /etc/hosts
-只能是在root用户下执行：
+只能是在root用户下执行，如下：
 echo "127.0.0.2 www.baidu.com" >> /etc/hosts
 ```
 3、判断目标向外通哪些端口
