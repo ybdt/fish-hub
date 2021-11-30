@@ -1,9 +1,3 @@
-# 1、说明
-## 一代资产收集-偏Web端
-父子公司、根域、子域、C段  
-## 二代资产收集-偏移动端
-JavaScript、APP、小程序、公众号  
-
 # 1、自己编写的指纹识别工具
 [finger-Enum.py](./附件/finger-Enum.py)  
 # 2、dismap识别指纹
