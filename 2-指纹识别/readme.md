@@ -1,5 +1,7 @@
 # 目标指纹批量识别
 
+指纹识别：Web服务器、应用服务器、Web框架、Web应用
+
 # 1、自己编写的指纹识别工具
 [finger-Enum.py](./附件/finger-Enum.py)  
 # 2、dismap识别指纹
