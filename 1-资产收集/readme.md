@@ -1,16 +1,16 @@
-# 总结
-控股父子公司（根域）、子域、C段、JavaScript、APP、小程序、公众号
+# 一、概述
+根域、子域、C段、JavaScript、APP、公众号、小程序
 
+# 二、详述
 # 0x01-根域收集
-## ICP备案收集根域
+## 1-ICP备案收集根域
 ICP备案查询目标的其他备案根域名，ICP备案查询地址：https://beian.miit.gov.cn  
 输入根域名（如wps.cn）查询对应的备案公司名，再通过备案公司名查询其他备案根域名  
-
 如果查询到的备案根域名较多，可使用如下方式半自动化获取：  
 1、Chrome下F12，点击Network->All可查看全部请求及响应  
 2、点击查询，可在右侧看到向/queryByCondition发起请求及对应的响应  
 3、将响应保存到本地，通过脚本[ICP备案收集根域.py](./附件/ICP备案收集根域/ICP备案收集根域.py)批量提取  
-## 天眼查收集根域
+## 2-天眼查收集根域
 通过天眼查中的“股权穿透图”，收集目标企业的子公司及父公司  
 
 # 0x02-子域收集
@@ -35,26 +35,28 @@ ICP备案查询目标的其他备案根域名，ICP备案查询地址：https://
 坑1：上来就扫描整个C段，12小时候才发现，卡在第2台主机......  
 经验1：扫描开始后要观察一下扫描进度，确实是否有防火墙，不要挂到VPS上就不管了  
 
-# 0x04-JavaScript收集
-## [1-LinkFinder收集资产]
+# 0x04-JavaScript资产收集
+## 1-LinkFinder收集资产
 [https://github.com/GerbenJavado/LinkFinder](https://github.com/GerbenJavado/LinkFinder)  
 
-# 0x05-APP收集
+# 0x05-APP资产收集
 APP获取：官网  
-## [1-AppInfoScanner收集资产]
+## 1-AppInfoScanner收集资产
 [https://github.com/kelvinBen/AppInfoScanner](https://github.com/kelvinBen/AppInfoScanner)  
 使用AppInfoScanner提取资产时，可能会碰到APP加壳的情况，待解决  
+## 2-BurpSuite收集资产
 
-# 0x06-公众号收集
+# 0x06-公众号资产收集
 微信公众号获取：在微信公众号搜索处输入“滨州市人民医院”，可获取“滨州市人民医院”相关微信公众号  
+## 1-BurpSuite收集资产
 可通过burp抓到数据包，不过速度较慢，待解决  
 
-# 0x07-小程序收集
+# 0x07-小程序资产收集
 小程序获取：在微信小程序搜索处输入“滨州市人民医院”，可获取“滨州市人民医院”相关小程序  
+## 1-BurpSuite收集资产
 可通过burp抓到数据包，不过速度较慢，待解决  
 
 # 0x08-参考链接
 红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone：https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
 fofa api相关：https://blog.csdn.net/wuyou1995/article/details/105592102  
 fofa api相关：https://classic.fofa.so/api  
-
