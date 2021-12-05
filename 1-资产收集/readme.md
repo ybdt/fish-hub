@@ -1,7 +1,3 @@
-# 一、概述
-根域、子域、C段、JavaScript、APP、公众号、小程序
-
-# 二、详述
 # 0x01-根域收集
 #### 1-ICP备案收集根域
 ICP备案查询目标的其他备案根域名，ICP备案查询地址：https://beian.miit.gov.cn  
@@ -15,34 +11,35 @@ ICP备案查询目标的其他备案根域名，ICP备案查询地址：https://
 
 # 0x02-子域收集
 #### 1-fofa收集子域
-[https://fofa.so](https://fofa.so)  
+地址：https://fofa.so/  
 结果导出：之前使用工具[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现fofa_viewer导出的结果不完整，改用自己工具[fofa-Extractor.py](./附件/fofa-Extractor.py)  
 #### 2-phpinfo.me收集子域
-[https://phpinfo.me/domain](https://phpinfo.me/domain)  
+地址：https://phpinfo.me/domain/  
 结果导出：可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
 #### 3-subDomainsBrute收集子域
-[https://github.com/lijiejie/subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)  
+地址：https://github.com/lijiejie/subDomainsBrute/  
 #### 4-ksubdomain收集子域
-[https://github.com/knownsec/ksubdomain](https://github.com/knownsec/ksubdomain)  
+地址：https://github.com/knownsec/ksubdomain/  
 #### 5-OneForAll收集子域
-[https://github.com/shmilylty/OneForAll](https://github.com/shmilylty/OneForAll)  
+地址：https://github.com/shmilylty/OneForAll/  
 #### 6-subfinder收集子域
-[https://github.com/projectdiscovery/subfinder](https://github.com/projectdiscovery/subfinder)  
+地址：https://github.com/projectdiscovery/subfinder/  
 
 # 0x03-C段收集
 #### 1-nmap收集C段
+nmap地址：https://nmap.org/  
 查询到某个子域ip和目标组织位于同一城市，可考虑收集目标IP全端口、目标IP半个C段、目标IP整个C段  
 坑1：上来就扫描整个C段，12小时候才发现，卡在第2台主机......  
 经验1：扫描开始后要观察一下扫描进度，确实是否有防火墙，不要挂到VPS上就不管了  
 
 # 0x04-JavaScript资产收集
 #### 1-LinkFinder收集资产
-[https://github.com/GerbenJavado/LinkFinder](https://github.com/GerbenJavado/LinkFinder)  
+LinkFinder地址：https://github.com/GerbenJavado/LinkFinder/  
 
 # 0x05-APP资产收集
 APP获取：官网  
 #### 1-AppInfoScanner收集资产
-[https://github.com/kelvinBen/AppInfoScanner](https://github.com/kelvinBen/AppInfoScanner)  
+AppInfoScanner地址：https://github.com/kelvinBen/AppInfoScanner/  
 使用AppInfoScanner提取资产时，可能会碰到APP加壳的情况，待解决  
 #### 2-BurpSuite收集资产
 
@@ -56,7 +53,11 @@ APP获取：官网
 #### 1-BurpSuite收集资产
 可通过burp抓到数据包，不过速度较慢，待解决  
 
-# 0x08-参考链接
+# 0x08-Web目录资产收集
+#### 1-dirsearch收集资产
+dirsearch地址：https://github.com/maurosoria/dirsearch/  
+
+# 参考链接
 红蓝对抗之企业对外根域名资产收集 by 举起手来_火线Zone：https://mp.weixin.qq.com/s/irX-cQ23Pzb0pS8K-EE38Q  
 fofa api相关：https://blog.csdn.net/wuyou1995/article/details/105592102  
 fofa api相关：https://classic.fofa.so/api  
