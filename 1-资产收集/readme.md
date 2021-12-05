@@ -10,19 +10,19 @@ ICP备案查询目标的其他备案根域名，ICP备案查询地址：https://
 通过天眼查中的“股权穿透图”，收集目标企业的子公司及父公司  
 
 # 0x02-子域收集
-#### 1-fofa收集子域
+#### 01-fofa收集子域
 地址：https://fofa.so/  
 结果导出：之前使用工具[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现fofa_viewer导出的结果不完整，改用自己工具[fofa-Extractor.py](./附件/fofa-Extractor.py)  
-#### 2-phpinfo.me收集子域
+#### 02-phpinfo.me收集子域
 地址：https://phpinfo.me/domain/  
 结果导出：可使用工具[phpinfo.me-Extractor.py](./附件/phpinfo.me-Extractor.py)  
-#### 3-subDomainsBrute收集子域
+#### 03-subDomainsBrute收集子域
 地址：https://github.com/lijiejie/subDomainsBrute/  
-#### 4-ksubdomain收集子域
+#### 04-ksubdomain收集子域
 地址：https://github.com/knownsec/ksubdomain/  
-#### 5-OneForAll收集子域
+#### 05-OneForAll收集子域
 地址：https://github.com/shmilylty/OneForAll/  
-#### 6-subfinder收集子域
+#### 06-subfinder收集子域
 地址：https://github.com/projectdiscovery/subfinder/  
 
 # 0x03-C段收集
