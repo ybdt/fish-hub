@@ -15,7 +15,7 @@ ICP备案查询目标的其他备案根域名，ICP备案查询地址：https://
 结果导出：之前使用工具[https://github.com/wgpsec/fofa_viewer](https://github.com/wgpsec/fofa_viewer)，不过发现fofa_viewer导出的结果不完整，改用自己工具[fofa-Extractor.py](./附件/fofa-Extractor.py)  
 #### 2-phpinfo.me收集子域
 地址：https://phpinfo.me/domain/  
-结果导出：可使用工具[phpinfo_me_extractor.py](./附件/phpinfo_me_extractor.py)  
+结果导出：可使用工具[phpinfo.me-Extractor.py](./附件/phpinfo.me-Extractor.py)  
 #### 3-subDomainsBrute收集子域
 地址：https://github.com/lijiejie/subDomainsBrute/  
 #### 4-ksubdomain收集子域
