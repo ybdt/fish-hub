@@ -1,8 +1,3 @@
-文章标题：记某网络安全设备逻辑缺陷导致的getshell
-
-文章地址1：https://mp.weixin.qq.com/s/cwXqgTQIMZSRvQ54N6Ogug  
-文章地址2：https://forum.butian.net/share/305
-
 ```
 文章归纳总结（作者思路梳理）：
 1、通过目标公司官网获知有哪些网络安全设备产品、通过网络安全设备Web界面获知哪些设备界面简陋、通过网络空间搜索引擎获知哪些设备使用量较大，综合评定选择一款产品作为目标
