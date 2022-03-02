@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://www.cnblogs.com/liuqiyun/p/12488845.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="description" content="from:https://www.cnblogs.com/mysticbinary/p/11613872.html 需求# Android APP安全测试时，主要工作分为： APK安全 业务安全 AP">
+    <meta property="og:description" content="from:https://www.cnblogs.com/mysticbinary/p/11613872.html 需求# Android APP安全测试时，主要工作分为： APK安全 业务安全 AP">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.svg" type="image/svg+xml">
+    
+    <style>:not(.cnblogs_code):not(.cnblogs_Highlighter)>pre:not([class*="language-"]):not([highlighted]):not(.hljs) {
+        background: rgb(245, 245, 245);
+        padding: 5px;
+        border: 1px solid rgb(204, 204, 204);
+        border-radius: 3px;
+        border-color: transparent;
+        color: rgb(0, 0, 0);
+        font-family: "Courier New", sans-serif;
+    }:not(.cnblogs_code):not(.cnblogs_Highlighter)>pre:not([highlighted]) code:not(.hljs) {
+            background: rgb(245, 245, 245) !important;
+            border-color: transparent !important;
+        }</style><link rel="stylesheet" href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/bundle-darkgreentrip.min.css">
+    <link id="highlighter-theme-cnblogs" type="text/css" rel="stylesheet" href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/cnblogs.css">
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/bundle-darkgreentrip-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/liuqiyun/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/liuqiyun/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/liuqiyun/wlwmanifest.xml">
+    <script type="text/javascript" async="" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/analytics.js.下载"></script><script>
+        var currentBlogId = 279956;
+        var currentBlogApp = 'liuqiyun';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'darkgreentrip';
+        var visitorUserId = '';
+        var hasCustomScript = true;
+        try {
+            if (hasCustomScript && document.referrer && document.referrer.indexOf('baidu.com') >= 0) {
+                Object.defineProperty(document, 'referrer', { value: '' });
+                Object.defineProperty(Document.prototype, 'referrer', { get: function(){ return ''; } });
+            }
+        } catch(error) { }
+        window.codeHighlightEngine = 1;
+        window.enableCodeLineNumber = false;
+        window.codeHighlightTheme = 'cnblogs';
+    </script>
+        <script>
+            var currentPostDateAdded = '2020-03-13 20:39';
+        </script>
+    <script src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+    <script src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/blog-common.min.js.下载"></script><style type="text/css">.medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}</style><script id="hljs-script" async="" data-loaded="true" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/highlight.min.js.下载"></script>
+    
+    
+    
+<meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A8FHS1NmdCwGqD9DwOicnHHY+y27kdWfxKa0YHSGDfv0CSpDKRHTQdQmZVPDUdaFWUsxdgVxlwAd6o+dhJykPA0AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A8zdXi6dr1hwXEUjQrYiyYQGlU3557y5QWDnN0Lwgj9ePt66XMEvNkVWOEOWPd7TP9sBQ25X0Q15Lr1Nn4oGFQkAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A4/Htern2udN9w3yJK9QgWQxQFruxOXsXL7cW60DyCl0EZFGCSme/J33Q/WzF7bBkVvhEWDlcBiUyZaim5CpFQwAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><script src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/pubads_impl_2021120601.js.下载" async=""></script><link rel="preload" href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/f.txt" as="script"><script type="text/javascript" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/f.txt"></script></head>
+<body class="skin-darkgreentrip no-navbar hljs-engine">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/logo.svg" alt="博客园Logo"></a></li>
+                <li><a href="https://www.cnblogs.com/" onclick="countClicks(&#39;skin-navbar-sitehome&#39;)">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-news&#39;)">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-q&#39;)">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-brands&#39;)">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-ing&#39;)">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-edu&#39;)">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3">
+                        <button type="submit" id="zzk_search_button">
+                            <img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/search.svg" alt="搜索">
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔" style="display: none;">
+                        <img id="new_post_icon" class="navbar-icon" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/newpost.svg" alt="写随笔">
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客" style="display: none;">
+                        <img id="myblog_icon" class="navbar-icon" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/myblog.svg" alt="我的博客">
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息" style="display: none;">
+                        <img id="msg_icon" class="navbar-icon" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/message.svg" alt="短消息">
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown" style="display: none;">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/avatar-default.svg" alt="用户头像">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/lite-mode-check.svg" class="hide"><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/" style="display: inline;">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()" style="display: inline;">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page_begin_html">
+        
+
+
+
+
+
+<title>打赏</title>
+
+<script>
+
+/*********************************************打赏_Start****************************************************/
+      
+
+  window.tctipConfig = {
+            staticPrefix: "http://static.tctip.com",
+            buttonImageId: 8,
+            buttonTip:  "zanzhu",
+            list:{
+                alipay: { qrimg: "https://files.cnblogs.com/files/liuqiyun/o_ali_pay111.bmp"}, //修改1
+                weixin: { qrimg: "https://files.cnblogs.com/files/liuqiyun/o_wechat_pay222.bmp"}, //修改2
+            }
+        };
+
+
+/*********************************************打赏_End****************************************************/
+
+
+/*********************************************打赏图片change_Start****************************************************/
+
+var imgsrcStar="http://static.tctip.com/img/zanzhu/tab_";
+var imgsrcEnd=".png";
+var imgNum=8;
+function ImgChange(){ 
+//console.log(imgNum);
+ imgNum= imgNum+1;
+if( imgNum==10){
+ imgNum=1;
+}
+if($(".btn-myRewards"))
+{
+$(".btn-myRewards").find("img").attr("src",imgsrcStar+ imgNum+imgsrcEnd);
+}
+
+} 
+var t1 = window.setInterval(ImgChange,1000); 
+
+
+/*********************************************打赏图片change_End****************************************************/
+
+
+
+/*********************************************广告_Start****************************************************/
+var obj=$('<a href="javascript:void" target="_blank"><span>【软考】</span>非常全的免费系统架构设计师（软考架构师）资料加博主QQ:552343492,备注软考资料!!!</a><br>');
+function AdInit(){ 
+if($("#ad_t2")){
+$("#ad_t2").empty();
+$("#ad_t2").append(obj.clone());
+$("#ad_t2").append(obj.clone());
+$("#ad_t2").append(obj.clone());
+//window.clearInterval(t2);
+}
+} 
+var t2 = window.setInterval(AdInit,1000); 
+
+/*********************************************广告_End****************************************************/
+
+</script>
+<script src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/tctip.min.js.下载" defer=""></script>
+
+
+
+    </div>
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/liuqiyun/"><img id="blogLogo" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/logo.gif" alt="返回主页"></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/liuqiyun/">刘奇云</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/liuqiyun/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E5%88%98%E5%A5%87%E4%BA%91">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/liuqiyun/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<span id="stats_post_count">随笔 - 553&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 65&nbsp; </span>
+<span id="stats-total-view-count">阅读 - 
+<span title="总阅读数: 1751972">
+175万</span></span>
+
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/liuqiyun/p/12488845.html">
+    <span>Burp Suite抓包-Android导入HTTPS</span>
+    
+
+
+
+</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body blogpost-body-html">
+<h1>from:<a href="https://www.cnblogs.com/mysticbinary/p/11613872.html">https://www.cnblogs.com/mysticbinary/p/11613872.html</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<h1 id="1115929508">需求<a class="esa-anchor" href="https://www.cnblogs.com/mysticbinary/p/11613872.html#1115929508">#</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<p>Android APP安全测试时，主要工作分为：</p>
+<ul>
+<li>APK安全</li>
+<li>业务安全</li>
+</ul>
+<p>APK安全这里不讨论，我说说业务安全，因为大部分的业务校验逻辑还是放在Servier端，这里就会涉及到网络通信了。因此网络抓包是测试的根本，一般APP都会采用HTTP协议、Websocket、Socket协议。其中HTTP协议的最多，Websocket是后起之秀，Socket最少。针对HTTP和Websocket，Burp Suite是进行抓包的不二之选 。</p>
+<h1 id="1536387336">设置代理<a class="esa-anchor" href="https://www.cnblogs.com/mysticbinary/p/11613872.html#1536387336">#</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<blockquote>
+<p>先设置好代理端，在设置Android端；</p>
+</blockquote>
+<h2 id="2814048817">Burp Suite代理端设置<a class="esa-anchor" href="https://www.cnblogs.com/mysticbinary/p/11613872.html#2814048817">#</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930181532435-1354612174.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930181532435-1354612174.png" alt=""></a></p>
+<p>修改代理监听，选择这个具体地址（Specific address）。注意，Android端也得修改成这个IP。</p>
+<h2 id="1511030115">Android端设置<a class="esa-anchor" href="https://www.cnblogs.com/mysticbinary/p/11613872.html#1511030115">#</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>找到网络，然后修改网络，<br><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930181009614-220891246.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930181009614-220891246.png" alt=""></a></p>
+<p><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930181050174-353852155.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930181050174-353852155.png" alt=""></a></p>
+<p>保存修改就OK了。</p>
+<h1 id="705417010">发现证书问题<a class="esa-anchor" href="https://www.cnblogs.com/mysticbinary/p/11613872.html#705417010">#</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<p>当访问类似https://m.baidu.com/ 这种https网站时就会报错。现在互联网企业的业务基本也使用https来防止中间人攻击了。发现问题，解决问题，那么下面介绍怎么安装证书，其实和Firefox浏览器安装证书是一样的原理，但是Android在细节步骤上有些不一样，下面是步骤。</p>
+<h2 id="3118404870">先导出cacert.cer证书<a class="esa-anchor" href="https://www.cnblogs.com/mysticbinary/p/11613872.html#3118404870">#</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<blockquote>
+<p>默认是导出cacert.der</p>
+
+</blockquote>
+<p><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182341419-19222429.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182341419-19222429.png" alt=""></a></p>
+<p>自己写上文件名<br><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182426538-1131763727.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182426538-1131763727.png" alt=""></a></p>
+<p><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182446648-387901848.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182446648-387901848.png" alt=""></a></p>
+<p><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182502806-1217416539.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182502806-1217416539.png" alt=""></a><br>提示导出成功。</p>
+<p>去导出路径看看，文件是否存在。<br><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182611435-303381481.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182611435-303381481.png" alt=""></a></p>
+<h2 id="250936108">传送到Android端<a class="esa-anchor" href="https://www.cnblogs.com/mysticbinary/p/11613872.html#250936108">#</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>传送到Android有好几种方法，我以前使用QQ传输，后来发现有adb工具之后，发现太方便了，还能指定路径，一般放到SD卡（外部可访问路径）即可。</p>
+<div class="esa-clipboard-button" data-tips="复制代码" data-clipboard-target="#copy_target_0">Copy</div>
+<pre class="linux" highlighted="true"><code id="copy_target_0" class="hljs groovy apache"><span class="hljs-attribute">adb</span> push D:\cacert.cer /sdcard/
+<span class="hljs-attribute">D</span>:\cacert.cer: <span class="hljs-number">1</span> file pushed. <span class="hljs-number">0</span>.<span class="hljs-number">2</span> MB/s (<span class="hljs-number">973</span> bytes in <span class="hljs-number">0</span>.<span class="hljs-number">004</span>s) // 提示只用了<span class="hljs-number">0</span>.<span class="hljs-number">004</span>秒 就传输好了，比QQ牛逼一百倍；</code></pre>
+<p><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182806545-1489946553.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930182806545-1489946553.png" alt=""></a></p>
+<p>使用Android自带的工具查看文件：<br><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183017302-889351796.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183017302-889351796.png" alt=""></a></p>
+<p><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183037804-1109993841.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183037804-1109993841.png" alt=""></a></p>
+<h2 id="307063130">Android安装CA证书<a class="esa-anchor" href="https://www.cnblogs.com/mysticbinary/p/11613872.html#307063130">#</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>在设置里面搜索安全，<br><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183156784-996670706.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183156784-996670706.png" alt=""></a></p>
+<p>选择你的路径<br><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183223310-1710195029.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183223310-1710195029.png" alt=""></a></p>
+<p><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183239042-1593406928.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183239042-1593406928.png" alt=""></a><br><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183245631-1543983740.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183245631-1543983740.png" alt=""></a></p>
+<h2 id="2810412857">测试HTTPS<a class="esa-anchor" href="https://www.cnblogs.com/mysticbinary/p/11613872.html#2810412857">#</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>安装好CA证书之后，访问一下HTTPS看看<br><a href="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183651765-1989380630.png" data-title="" data-alt="" data-lightbox="roadtrip"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/1552062-20190930183651765-1989380630.png" alt=""></a></p>
+<p>抓包成功。</p>
+</div>
+<div class="clear"></div>
+<div id="blog_post_info_block"><div id="BlogPostCategory">
+    分类: 
+            <a href="https://www.cnblogs.com/liuqiyun/category/1351553.html" target="_blank">抓包</a></div>
+
+
+    <div id="blog_post_info">
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(12488845,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow(&#39;689515f8-bd02-e611-9fc1-ac853d9f53cc&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/liuqiyun/" target="_blank"><img src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/20160415120337.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/liuqiyun/">刘奇云</a><br>
+            <a href="https://home.cnblogs.com/u/liuqiyun/followees/">关注 - 26</a><br>
+            <a href="https://home.cnblogs.com/u/liuqiyun/followers/">粉丝 - 97</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;689515f8-bd02-e611-9fc1-ac853d9f53cc&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(12488845,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(12488845,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+    <div class="clear"></div>
+    <div id="post_next_prev">
+
+    <a href="https://www.cnblogs.com/liuqiyun/p/12485980.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/liuqiyun/p/12485980.html" title="发布于 2020-03-13 13:38">BurpSuite抓取HTTPS请求</a>
+    <br>
+    <a href="https://www.cnblogs.com/liuqiyun/p/12509534.html" class="p_n_p_prefix">» </a> 下一篇：    <a href="https://www.cnblogs.com/liuqiyun/p/12509534.html" title="发布于 2020-03-17 11:29">系统稳定性问题总结</a>
+
+</div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2020-03-13 20:39</span>&nbsp;
+<a href="https://www.cnblogs.com/liuqiyun/">刘奇云</a>&nbsp;
+阅读(<span id="post_view_count">1414</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12488845" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(12488845);return false;">收藏</a>&nbsp;
+<a href="javascript:void(0)" onclick="reportManager.report({ currentUserId: &#39;&#39;, targetType: &#39;blogPost&#39;, targetId: &#39;12488845&#39;, targetLink: &#39;https://www.cnblogs.com/liuqiyun/p/12488845.html&#39;, title: &#39;Burp Suite抓包-Android导入HTTPS&#39; })">举报</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+
+<script>
+    markdown_highlight()
+    var allowComments = true, cb_blogId = 279956, cb_blogApp = 'liuqiyun', cb_blogUserGuid = '689515f8-bd02-e611-9fc1-ac853d9f53cc';
+    var cb_entryId = 12488845, cb_entryCreatedDate = '2020-03-13 20:39', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/liuqiyun/p/12488845.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/liuqiyun/p/12488845.html#top">返回顶部</a></div>
+    <div id="comment_form_container" style="visibility: visible;"><div class="login_tips">
+    登录后才能查看或发表评论，立即 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return account.login(&#39;!comments&#39;);">登录</a> 或者
+    <a href="https://www.cnblogs.com/">逛逛</a> 博客园首页
+</div>
+</div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="cnblogs_ch"><a href="https://www.cnblogs.com/shanyou/p/netconfchina2021.html" target="_blank">【推荐】2021中国.NET开发者峰会近50场热点技术专题揭秘</a><br><a href="https://brands.cnblogs.com/huawei" target="_blank" onclick="gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-华为专区&#39;})">【推荐】华为开发者专区，与开发者一起构建万物互联的智能世界</a><br><a href="http://www.uccpsoft.com/index.htm" target="_blank" onclick="gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-ucancode&#39;})">【推荐】跨平台组态\工控\仿真\CAD 50万行C++源码全开放免费下载！</a><br><a href="https://brands.cnblogs.com/huawei/p/2730" target="_blank" onclick="gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-华为专区&#39;})">【推荐】华为 HMS Core 线上 Codelabs 挑战赛第4期，探索“智”感生活</a><br></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id="div-gpt-ad-1592365906576-0" style="width: 300px; height: 250px;" data-google-query-id="CO7AoaG04vQCFT_OTAIdP3kAWg"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" role="region" aria-label="Advertisement" tabindex="0" allow="attribution-reporting" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/saved_resource.html"></iframe></div></div>
+    </div>
+    <div id="under_post_card1"><div class="under-post-card">
+<b>编辑推荐：</b>
+<br>
+
+· <a href="https://www.cnblogs.com/lonely-wolf/p/15674526.html" target="_blank">一文讲透算法中的时间复杂度和空间复杂度计算方式 </a>
+    <br>
+· <a href="https://www.cnblogs.com/cool-net/p/15655036.html" target="_blank">.NET Core基础篇：集成Swagger文档与自定义Swagger UI</a>
+    <br>
+· <a href="https://www.cnblogs.com/myshowtime/p/15666336.html" target="_blank">「译」 .NET 6 中 gRPC 的新功能</a>
+    <br>
+· <a href="https://www.cnblogs.com/wzh2010/p/13874211.html" target="_blank">一次缓存雪崩的灾难复盘</a>
+    <br>
+· <a href="https://www.cnblogs.com/wanghao72214/p/15659718.html" target="_blank">如何在 ASP.NET Core 中构建轻量级服务 </a>
+    <br>
+</div></div>
+    <div id="under_post_card2"><div class="itnews under-post-card">
+    <b>最新新闻</b>：
+    <br>
+ ·          <a href="https://news.cnblogs.com/n/708977/" target="_blank">蔚来全新车型本周发布：新车谍照曝光 特斯拉Model Y劲敌（2021-12-14 11:23）</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/708975/" target="_blank">王化回应雷军退出多家小米关联公司：造车提速、能不管的事就不管了（2021-12-14 11:18）</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/708974/" target="_blank">星巴克承认使用过期食材 央视网：星巴克的“震惊”令人震惊（2021-12-14 11:12）</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/708973/" target="_blank">美国《时代》周刊2021年度人物揭晓：马斯克当选（2021-12-14 11:08）</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/708972/" target="_blank">512倍杠杆！不要贪！曹德旺点评许家印危机：39亿竟撬动2万亿贷款（2021-12-14 11:03）</a>
+        <br>
+    » <a href="https://news.cnblogs.com/" title="IT 新闻" target="_blank">更多新闻...</a>
+</div></div>
+    <div id="HistoryToday" class="under-post-card">
+<b>历史上的今天：</b>
+<br>
+
+2017-03-13    <a href="https://www.cnblogs.com/liuqiyun/p/6541961.html">oracle之trunc(sysdate)</a>
+    <br>
+2017-03-13    <a href="https://www.cnblogs.com/liuqiyun/p/6541176.html">小菜学习设计模式（五）—控制反转（Ioc）</a>
+    <br>
+</div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+
+           window.tocManager.displayDisableTocTips = false
+           window.tocManager.generateToc();
+           setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem"><!--done-->
+<h3 class="catListTitle">公告</h3>
+
+<div id="blog-news">
+    
+    <div id="profile_block">
+        昵称：
+        <a href="https://home.cnblogs.com/u/liuqiyun/">
+            刘奇云
+        </a>
+        <br>
+        园龄：
+        <a href="https://home.cnblogs.com/u/liuqiyun/" title="入园时间：2016-04-15">
+            5年7个月
+        </a>
+        <br>
+        粉丝：
+        <a href="https://home.cnblogs.com/u/liuqiyun/followers/">
+            97
+        </a>
+        <br>
+        关注：
+        <a href="https://home.cnblogs.com/u/liuqiyun/followees/">
+            26
+        </a>
+        <div id="p_b_follow">
+<a href="javascript:void(0)" onclick="follow(&#39;689515f8-bd02-e611-9fc1-ac853d9f53cc&#39;)">+加关注</a></div>
+        <script>getFollowStatus('689515f8-bd02-e611-9fc1-ac853d9f53cc');</script>
+    </div>
+</div>
+
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="">
+
+<table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <table class="CalTitle" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2021/11/14&#39;); return false;">&lt;</a>
+                            </td>
+                            <td align="center">2021年12月</td>
+                            <td align="right" class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2022/01/14&#39;); return false;">&gt;</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    <tr>
+        <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+        <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+        <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+        <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+        <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+        <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+        <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+    </tr>
+            <tr>
+                            <td class="CalOtherMonthDay" align="center">28</td>
+                            <td class="CalOtherMonthDay" align="center">29</td>
+                            <td class="CalOtherMonthDay" align="center">30</td>
+                        <td class="" align="center">
+                            <a href="https://www.cnblogs.com/liuqiyun/archive/2021/12/01.html"><u>1</u></a>
+                        </td>
+                        <td class="" align="center">
+                            2
+                        </td>
+                        <td class="" align="center">
+                            3
+                        </td>
+                    <td class="CalWeekendDay" align="center">
+                        4
+                    </td>
+            </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            5
+                        </td>
+                            <td class="" align="center">
+                                6
+                            </td>
+                            <td class="" align="center">
+                                7
+                            </td>
+                            <td class="" align="center">
+                                8
+                            </td>
+                            <td class="" align="center">
+                                9
+                            </td>
+                            <td class="" align="center">
+                                10
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            11
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            12
+                        </td>
+                            <td class="" align="center">
+                                13
+                            </td>
+                            <td class="CalTodayDay" align="center">
+                                14
+                            </td>
+                            <td class="" align="center">
+                                15
+                            </td>
+                            <td class="" align="center">
+                                16
+                            </td>
+                            <td class="" align="center">
+                                17
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            18
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            19
+                        </td>
+                            <td class="" align="center">
+                                20
+                            </td>
+                            <td class="" align="center">
+                                21
+                            </td>
+                            <td class="" align="center">
+                                22
+                            </td>
+                            <td class="" align="center">
+                                23
+                            </td>
+                            <td class="" align="center">
+                                24
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            25
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            26
+                        </td>
+                            <td class="" align="center">
+                                27
+                            </td>
+                            <td class="" align="center">
+                                28
+                            </td>
+                            <td class="" align="center">
+                                29
+                            </td>
+                            <td class="" align="center">
+                                30
+                            </td>
+                            <td class="" align="center">
+                                31
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            1
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalOtherMonthDay" align="center">
+                            2
+                        </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                3
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                4
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                5
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                6
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                7
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            8
+                        </td>
+                </tr>
+    </tbody>
+</table></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div id="sidebar_search" class="mySearch">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            <div id="widget_my_google" class="div_my_zzk">
+                <input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block"><div class="catListLink">
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    
+<li><a href="https://www.cnblogs.com/liuqiyun/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/liuqiyun/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/liuqiyun/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/liuqiyun/RecentComments.html" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/liuqiyun/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+</div>
+
+</div>
+
+<!-- 最新随笔 -->
+<div id="sidebar_recentposts" class="sidebar-block"><div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+    <ul>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15630148.html">1.bat 脚本批量下载仓库</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15623456.html">2.js事件循环</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15591689.html">3.单元测试</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15528058.html">4.&amp; | ^ ~  &gt;&gt; &lt;&lt;</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15507881.html">5.程序内存使用高，问题诊断方法</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15479189.html">6.Grpc.Core.RpcException: Status(StatusCode=DeadlineExceeded, Detail="Deadline Exceeded")</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15472570.html">7.公司限制网络，不能访问b站..etc，怎么办？搞起来</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15460212.html">8.Centos7.5安装Nginx</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15434469.html">9.sql优化</a>
+
+                </li>
+                <li>
+                    
+<a href="https://www.cnblogs.com/liuqiyun/p/15429059.html">10.Nginx高可用方案</a>
+
+                </li>
+    </ul>
+</div>
+
+</div>
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block"></div>
+
+<!-- 积分与排名 -->
+
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+
+    <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔分类
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1634615.html" class="category-item-link" rel="" target="">.net core(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1106163.html" class="category-item-link" rel="" target="">.net 跨域(7)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1098653.html" class="category-item-link" rel="" target="">《大型网站技术架构》(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1094125.html" class="category-item-link" rel="" target="">ader模板(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1094874.html" class="category-item-link" rel="" target="">c#安全(11)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/816039.html" class="category-item-link" rel="" target="">C#基础(105)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1267204.html" class="category-item-link" rel="" target="">consul(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/816028.html" class="category-item-link" rel="" target="">css(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/816036.html" class="category-item-link" rel="" target="">easyUl(7)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1171508.html" class="category-item-link" rel="" target="">ef(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1119618.html" class="category-item-link" rel="" target="">ext(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1335860.html" class="category-item-link" rel="" target="">feed流(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1825763.html" class="category-item-link" rel="" target="">GRPC(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1574990.html" class="category-item-link" rel="" target="">iis(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/816030.html" class="category-item-link" rel="" target="">javascript(23)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/816032.html" class="category-item-link" rel="" target="">jquery(13)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1251229.html" class="category-item-link" rel="" target="">juicer(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1252544.html" class="category-item-link" rel="" target="">layui(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1017818.html" class="category-item-link" rel="" target="">linq(13)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1182418.html" class="category-item-link" rel="" target="">linq.js(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1209261.html" class="category-item-link" rel="" target="">linux入门(11)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1032672.html" class="category-item-link" rel="" target="">log(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1098617.html" class="category-item-link" rel="" target="">memcached(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1252297.html" class="category-item-link" rel="" target="">mind(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1017822.html" class="category-item-link" rel="" target="">mvc(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1570134.html" class="category-item-link" rel="" target="">mysql(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1238945.html" class="category-item-link" rel="" target="">nginx(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1127389.html" class="category-item-link" rel="" target="">node相关(7)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1110001.html" class="category-item-link" rel="" target="">nosql(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1017820.html" class="category-item-link" rel="" target="">npoi(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1238009.html" class="category-item-link" rel="" target="">nuget包管理(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1131929.html" class="category-item-link" rel="" target="">odata(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/979447.html" class="category-item-link" rel="" target="">oracle(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1129723.html" class="category-item-link" rel="" target="">php(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1316067.html" class="category-item-link" rel="" target="">RabbitMQ(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1210378.html" class="category-item-link" rel="" target="">redis(12)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1241805.html" class="category-item-link" rel="" target="">socket通信(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/816122.html" class="category-item-link" rel="" target="">sql server(46)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/979455.html" class="category-item-link" rel="" target="">sql server &amp; oracle(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1026822.html" class="category-item-link" rel="" target="">svn(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1405993.html" class="category-item-link" rel="" target="">swagger(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1235504.html" class="category-item-link" rel="" target="">test(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1131275.html" class="category-item-link" rel="" target="">TFS(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1541748.html" class="category-item-link" rel="" target="">tools(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1094051.html" class="category-item-link" rel="" target="">UML(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1139607.html" class="category-item-link" rel="" target="">vue.js(14)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1223531.html" class="category-item-link" rel="" target="">wcf(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1026729.html" class="category-item-link" rel="" target="">WebAPi(12)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1110386.html" class="category-item-link" rel="" target="">WebClient WebRequest(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1584012.html" class="category-item-link" rel="" target="">webconfig配置(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1192371.html" class="category-item-link" rel="" target="">webpack(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1188242.html" class="category-item-link" rel="" target="">websocket(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1262276.html" class="category-item-link" rel="" target="">版本控制(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1298391.html" class="category-item-link" rel="" target="">代码生成器(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1109983.html" class="category-item-link" rel="" target="">多线程(17)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1331777.html" class="category-item-link" rel="" target="">分布式(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/2028509.html" class="category-item-link" rel="" target="">分析问题(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1333449.html" class="category-item-link" rel="" target="">服务(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1236586.html" class="category-item-link" rel="" target="">高并发(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1803840.html" class="category-item-link" rel="" target="">工作整理(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1047102.html" class="category-item-link" rel="" target="">功能(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1326544.html" class="category-item-link" rel="" target="">架构(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1189177.html" class="category-item-link" rel="" target="">爬数据(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1131358.html" class="category-item-link" rel="" target="">前端测试(6)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/979446.html" class="category-item-link" rel="" target="">设计模式(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1099237.html" class="category-item-link" rel="" target="">深入理解DIP、IoC、DI以及IoC容器(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1372227.html" class="category-item-link" rel="" target="">数据结构(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1447718.html" class="category-item-link" rel="" target="">数据类型转换(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1285740.html" class="category-item-link" rel="" target="">算法问题(15)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1290377.html" class="category-item-link" rel="" target="">网络(17)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1262207.html" class="category-item-link" rel="" target="">微信(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1183743.html" class="category-item-link" rel="" target="">文件上传下载(7)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1380517.html" class="category-item-link" rel="" target="">问题(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1447719.html" class="category-item-link" rel="" target="">验证(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1191450.html" class="category-item-link" rel="" target="">正则表达式(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/category/1351553.html" class="category-item-link" rel="" target="">抓包(7)</a>
+ 
+                </li>                
+            <li>
+                <a href="javascript:void(0)" onclick="sideColumnManager.loadMore(this)">更多</a>
+            </li>
+        </ul>
+
+
+    </div>    
+    <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔档案
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2021/12.html" class="category-item-link" rel="" target="">2021年12月(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2021/11.html" class="category-item-link" rel="" target="">2021年11月(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2021/10.html" class="category-item-link" rel="" target="">2021年10月(12)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2021/09.html" class="category-item-link" rel="" target="">2021年9月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2021/07.html" class="category-item-link" rel="" target="">2021年7月(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2021/06.html" class="category-item-link" rel="" target="">2021年6月(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2021/04.html" class="category-item-link" rel="" target="">2021年4月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2021/03.html" class="category-item-link" rel="" target="">2021年3月(11)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2021/02.html" class="category-item-link" rel="" target="">2021年2月(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2020/12.html" class="category-item-link" rel="" target="">2020年12月(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2020/10.html" class="category-item-link" rel="" target="">2020年10月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2020/09.html" class="category-item-link" rel="" target="">2020年9月(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2020/08.html" class="category-item-link" rel="" target="">2020年8月(6)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2020/07.html" class="category-item-link" rel="" target="">2020年7月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2020/06.html" class="category-item-link" rel="" target="">2020年6月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2020/05.html" class="category-item-link" rel="" target="">2020年5月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2020/03.html" class="category-item-link" rel="" target="">2020年3月(9)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2020/01.html" class="category-item-link" rel="" target="">2020年1月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/12.html" class="category-item-link" rel="" target="">2019年12月(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/11.html" class="category-item-link" rel="" target="">2019年11月(13)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/10.html" class="category-item-link" rel="" target="">2019年10月(11)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/09.html" class="category-item-link" rel="" target="">2019年9月(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/08.html" class="category-item-link" rel="" target="">2019年8月(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/07.html" class="category-item-link" rel="" target="">2019年7月(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/06.html" class="category-item-link" rel="" target="">2019年6月(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/05.html" class="category-item-link" rel="" target="">2019年5月(9)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/04.html" class="category-item-link" rel="" target="">2019年4月(9)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/03.html" class="category-item-link" rel="" target="">2019年3月(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/02.html" class="category-item-link" rel="" target="">2019年2月(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2019/01.html" class="category-item-link" rel="" target="">2019年1月(13)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/12.html" class="category-item-link" rel="" target="">2018年12月(6)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/11.html" class="category-item-link" rel="" target="">2018年11月(24)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/10.html" class="category-item-link" rel="" target="">2018年10月(7)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/09.html" class="category-item-link" rel="" target="">2018年9月(8)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/08.html" class="category-item-link" rel="" target="">2018年8月(45)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/07.html" class="category-item-link" rel="" target="">2018年7月(20)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/06.html" class="category-item-link" rel="" target="">2018年6月(27)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/05.html" class="category-item-link" rel="" target="">2018年5月(20)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/04.html" class="category-item-link" rel="" target="">2018年4月(12)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/03.html" class="category-item-link" rel="" target="">2018年3月(33)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/02.html" class="category-item-link" rel="" target="">2018年2月(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2018/01.html" class="category-item-link" rel="" target="">2018年1月(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/12.html" class="category-item-link" rel="" target="">2017年12月(25)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/11.html" class="category-item-link" rel="" target="">2017年11月(11)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/10.html" class="category-item-link" rel="" target="">2017年10月(18)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/09.html" class="category-item-link" rel="" target="">2017年9月(6)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/08.html" class="category-item-link" rel="" target="">2017年8月(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/07.html" class="category-item-link" rel="" target="">2017年7月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/06.html" class="category-item-link" rel="" target="">2017年6月(20)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/05.html" class="category-item-link" rel="" target="">2017年5月(24)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/04.html" class="category-item-link" rel="" target="">2017年4月(28)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/03.html" class="category-item-link" rel="" target="">2017年3月(38)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/02.html" class="category-item-link" rel="" target="">2017年2月(8)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2017/01.html" class="category-item-link" rel="" target="">2017年1月(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="false" style="display: none">
+                    
+<a href="https://www.cnblogs.com/liuqiyun/archive/2016/04.html" class="category-item-link" rel="" target="">2016年4月(1)</a>
+ 
+                </li>                
+            <li>
+                <a href="javascript:void(0)" onclick="sideColumnManager.loadMore(this)">更多</a>
+            </li>
+        </ul>
+
+
+    </div>    
+</div>
+
+<!-- 最新评论 -->
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block"><div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/8133904.html">
+                            1. Node.js安装及环境配置之Windows篇(372668)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/6549828.html">
+                            2. oracle中的exists 和not exists 用法详解(120180)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/6866158.html">
+                            3. C#中HttpWebRequest的用法详解(66389)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/8618121.html">
+                            4. easyui datagrid使用参考(57974)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/6742344.html">
+                            5. javascript中window.open()与window.location.href的区别(49543)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block"><div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/8133904.html">
+                            1. Node.js安装及环境配置之Windows篇(17)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/9144816.html">
+                            2. WebApi(6) 后台C#调用WebApi(6)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/6866158.html">
+                            3. C#中HttpWebRequest的用法详解(6)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/9118382.html">
+                            4. C#中lock死锁实例教程(3)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/liuqiyun/p/7098433.html">
+                            5. 让 SVN (TortoiseSVN)提交时忽略bin和obj目录(3)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block">
+<div id="topdigg_posts_wrap">
+    <div class="catListView">
+        <h3 class="catListTitle">推荐排行榜</h3>
+        <div id="TopDiggPostsBlock">
+            <ul style="word-break: break-all">
+                        <li>
+                            <a href="https://www.cnblogs.com/liuqiyun/p/8133904.html">
+                                1. Node.js安装及环境配置之Windows篇(24)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/liuqiyun/p/9446887.html">
+                                2. C#的字符串优化-String.Intern、IsInterned(4)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/liuqiyun/p/6589814.html">
+                                3. PL/SQL如何调试Oracle存储过程(4)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/liuqiyun/p/14987941.html">
+                                4. 一次Mysql连接池卡死导致服务无响应问题分析(.Net Mysql.Data 8.0.21)(3)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/liuqiyun/p/8618121.html">
+                                5. easyui datagrid使用参考(3)
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div></div><div id="sidebar_recentcomments" class="sidebar-block"><div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div class="RecentCommentBlock">
+        <ul>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/liuqiyun/p/7097189.html">1. Re:js控制radio选中</a></li>
+                    <li class="recent_comment_body"><p>good nice</p>
+</li>
+                    <li class="recent_comment_author">--zkx98</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/liuqiyun/p/9144816.html">2. Re:WebApi(6) 后台C#调用WebApi</a></li>
+                    <li class="recent_comment_body"><p>不好意思，我看看你发的新封装代码</p>
+</li>
+                    <li class="recent_comment_author">--littletom</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/liuqiyun/p/9144816.html">3. Re:WebApi(6) 后台C#调用WebApi</a></li>
+                    <li class="recent_comment_body">@刘奇云 文章里httpclient的最后实现代码中HttpClient httpClient = GetUseHttpClient(); 其中GetUseHttpClient()是怎样的代码...</li>
+                    <li class="recent_comment_author">--littletom</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/liuqiyun/p/9144816.html">4. Re:WebApi(6) 后台C#调用WebApi</a></li>
+                    <li class="recent_comment_body"><p>谢谢楼主</p>
+</li>
+                    <li class="recent_comment_author">--littletom</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/liuqiyun/p/9144816.html">5. Re:WebApi(6) 后台C#调用WebApi</a></li>
+                    <li class="recent_comment_body">@littletom 收到没?又封装了下，参考我发给你的，这里有长度限制...</li>
+                    <li class="recent_comment_author">--刘奇云</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+</div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright © 2021 刘奇云
+<br><span id="poweredby">Powered by .NET 6 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8FO3GXnjClZGrNGr2Ic8Z1qSdTXbq2ZL1M1Faz19kfdaHI8PjZ6t-kIimpVNoKB5pnB35-YHcEhhcIh95A5SYhPQslLBA_c8gSpN33tGcTsLf0VpXe7Hsn91dgQILhes_NapqAbB1ycoRt-ybf_VOmY">
+    <script async="" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/js"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var kv = getGACustom();
+    if (kv) {
+        gtag('set', kv);
+    }
+    gtag('config', 'UA-476124-1');
+    </script>
+    <script defer="" src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/hm.js.下载"></script><iframe src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/container.html" style="visibility: hidden; display: none;"></iframe>
+
+<iframe src="./Burp Suite抓包-Android导入HTTPS - 刘奇云 - 博客园_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body></html>
