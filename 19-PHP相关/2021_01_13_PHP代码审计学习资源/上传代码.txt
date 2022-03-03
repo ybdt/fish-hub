@@ -1,0 +1,41 @@
+ //处理图片上传
+            bool uploadPic = false;  //这里获取是否上传了文件  默认否
+            string newsPic = "";  //上传文件名默认为空
+            if (this.fuNewsPic.HasFile)//获取file服务器控件是否有文件
+            {
+                string Pic = this.fuNewsPic.FileName.ToLower(); //把文件名转换为小写的
+                string ext = Pic.Substring(Pic.LastIndexOf("."));//获取最后一个“.”号后面的文字  即为后缀
+                if (ext == ".jpg" || ext == ".png" || ext == ".gif") //判断后缀名是否违规
+                {
+                    int FileLength = this.fuNewsPic.PostedFile.ContentLength; //获取文件大小
+                    if (FileLength < 200000) //判断文件大小是否大于200K
+                    {
+                        //如果成立
+                        uploadPic = true; //更改uploadPic为true  因为有上传文件
+                        newsPic = System.DateTime.Now.ToFileTime().ToString() + ext; //把文件名以时间格式命名然后写入数据库
+                    }
+                    else
+                    {
+                        //如果不成立 则弹出警告框
+                        Page.RegisterStartupScript("", "<script langue=javascript>" + "alert('您上传的图片过大！系统只接受“小于200KB”的图片！');" + "</script>");
+                        return;
+                    }
+                }
+                else
+                {
+                    //如果违规则弹出警告框提示
+                    Page.RegisterStartupScript("", "<script langue=javascript>" + "alert('您上传的可能不是可以接收的图片类型，系统只接受“jpg,gif,png”类型的图片！');" + "</script>");
+                    return;
+                }
+            }
+
+
+    
+
+
+    //文件上传部分
+
+     if (uploadPic == true)  //判断upload是否为true  如果为true说明拥有文件需要上传
+            {
+                this.fuNewsPic.PostedFile.SaveAs(Server.MapPath("../../PagePic/" + newsPic));// 把文件重命名为时间格式   即是写入数据库的名字  并上传到根目录下的PagePic文件夹
+            }
