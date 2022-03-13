@@ -7,3 +7,5 @@
 
 文章地址：https://www.osuix.com/2021/01/12/qv2ray-trojan-go-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-for-win10-macos/  
 本地备份：Qv2ray Trojan-Go 安装配置 For win10 & MacOS - Asura & OSUIX.html  
+
+全部配置完后，相比之前能更稳定的科学上网，好舒服~  
