@@ -8,3 +8,6 @@ https://xz.aliyun.com/t/10057
 
 # windows下udf绕过disable_functions
 http://www.baikesec.com/webstudy/penetration/51.html  
+
+# PHP5.6下绕过disable_functions
+https://xz.aliyun.com/t/10996
