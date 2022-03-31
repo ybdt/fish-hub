@@ -1,22 +1,19 @@
-### 1、docker部署CTF题目
+### 01-docker部署CTF题目
 最简单的方式：下载别人的docker镜像，修改后打包成tar包  
 参考链接：  
 1、https://blog.csdn.net/q20010619/article/details/108587879  
 2、https://www.v0n.top/2020/05/01/如何正确使用Docker出一道CTF题目/  
 3、https://jwt1399.top/posts/50751.html  
 
-### 2、docker镜像加速
-参考链接：https://www.cnblogs.com/nhdlb/p/12567154.html  
-
-### 3、使用Dockerfile快速创建docker环境
+### 02-使用Dockerfile快速创建docker环境
 原理：将“下载别人的docker镜像”、“修改镜像”等动作写入Dockerfile文件中  
 参考链接：https://blooddark.github.io/blog/docker/3.html  
 
-### 4、docker中export和save的区别
+### 03-docker中export和save的区别
 export类似于创建快照，导出后，直接import即可使用，不需要做任何修改，缺点是文件体积较大  
 save保存后是镜像，需要结合Dockerfile配置镜像，以及拷贝需要的文件，优点是文件体积较小  
 
-### 5、构建自己的镜像
+### 04-构建自己的镜像
 说明：即使想构建全新的镜像，也要基于官方的空镜像
 参考连接：  
 1、https://itbilu.com/linux/docker/E1-k4FW_M.html  
@@ -81,3 +78,5 @@ docker inspect drupal_8.5.0
 #查看内置的mysql密码
 docker logs lamp
 ```
+### 参考链接
+https://segmentfault.com/a/1190000022374119 -> Docker之Ubuntu18.04简单安装    
