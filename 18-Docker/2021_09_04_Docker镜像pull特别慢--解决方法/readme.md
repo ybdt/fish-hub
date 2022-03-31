@@ -1,4 +1,4 @@
-在公司拉取docker镜像，拉取的超级慢，遂有此篇记录
+在公司pull docker镜像，pull的超级慢，遂有此篇记录
 
 访问阿里云[https://cn.aliyun.com/](https://cn.aliyun.com/)->登录->搜索“容器镜像服务”->左侧导航栏中镜像工具->镜像加速器（需要注意，ubuntu下默认没有/etc/docker/daemon.json这个文件，centos下默认有这个文件）
 
