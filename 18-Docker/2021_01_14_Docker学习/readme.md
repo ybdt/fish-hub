@@ -33,10 +33,11 @@ docker images
 #4|查看全部的（包括启动和未启动的）容器
 docker ps -a
 
-#启动容器，其中-p选项，主机端口:容器端口
+# run   Run a command in a new container
+# 其中-p选项   主机端口:容器端口
 docker run --name 容器名 -d -p 8080:8080 -p 22222:22222 镜像名
 
-#进入容器
+# exec   Run a command in a running container
 docker exec -it 容器名 /bin/bash
 
 #开始容器
