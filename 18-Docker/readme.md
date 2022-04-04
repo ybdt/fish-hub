@@ -8,6 +8,7 @@ apt-key fingerprint 0EBFCD88 # 验证gpg密钥
 add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" # 添加源
 apt update
 apt install docker-ce docker-ce-cli containerd.io
+配置一下镜像加速
 
 参考链接：
 ubuntu 20.04 LTS 安装docker -> https://www.1024sou.com/article/440450.html
