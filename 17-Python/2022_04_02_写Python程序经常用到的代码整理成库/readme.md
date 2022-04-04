@@ -1,18 +1,17 @@
 # 01-读取txt，写入txt
 ```
 def txt_to_txt():
-    tmp_list = []
-    with open("username.txt", "r", encoding="UTF-8") as fr:
-        with open("new-username.txt", "w", encoding="UTF-8") as fw:
+    with open("target.txt", "r", encoding="UTF-8") as fr:
+        with open("legal-target.txt", "w", encoding="UTF-8") as fw:
             lines = fr.readlines()
             for line_ in lines:
                 line = line_.strip()
-                if line not in tmp_list:
-                    tmp_list.append(line)
+                arr = line.split("/")
+                if len(arr) > 3:
+                    line = arr[0] + "/" + arr[1] + "/" + arr[2]
+                    fw.write(line + "\n")
                 else:
-                    pass
-            for i in tmp_list:
-                fw.write(i + "\n")
+                    fw.write(line + "\n")
 ```
 
 # 02-读取txt，写入csv
