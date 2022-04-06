@@ -13,6 +13,10 @@ sudo vim /etc/apt/sources.list
 ```
 
 # 03-通过设置，让kali系统不自动锁屏、休眠
+```
+休眠：Settings -> Power Manager -> Display -> Plugged in
+锁屏：Settings -> Power Manager -> Security
+```
 
 # 04-安装chrome（https://www.google.com/intl/zh-CN/chrome/）
 ```
