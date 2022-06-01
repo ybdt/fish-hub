@@ -36,7 +36,7 @@ Settings -> General -> Interface language（简体中文）
 06、设置中文乱码
 ```
 设置 -> 启动 -> 环境 -> 右侧空白处添加如下
-chcp utf8
+chcp utf8（chcp 65001）
 ```
 07、分屏
 ```
