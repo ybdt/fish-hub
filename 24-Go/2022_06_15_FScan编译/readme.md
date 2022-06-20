@@ -3,14 +3,11 @@
 查看当前 GOOS 环境变量
 set GOOS
 
-设置编译后运行的操作系统
-set GOOS=linux
-设置编译后运行的操作系统架构
-set GOARCH=amd64
-设置禁用CGO
-set CGO_ENABLED=0
+设置操作系统、CPU架构以及禁用CGO
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-s -w " -trimpath main.go
 
-go build -ldflags="-s -w " -trimpath
+设置操作系统、CPU架构以及禁用CGO
+GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-s -w " -trimpath main.go
 ```
 
 参考链接  
