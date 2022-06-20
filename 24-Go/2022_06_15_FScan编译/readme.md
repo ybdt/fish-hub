@@ -4,7 +4,10 @@
 set GOOS
 
 设置操作系统、CPU架构以及禁用CGO
-GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-s -w " -trimpath main.go
+set GOOS=linux
+set GOARCH=amd64
+set CGO_ENABLED=0
+go build -ldflags="-s -w " -trimpath main.go
 
 设置操作系统、CPU架构以及禁用CGO
 GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-s -w " -trimpath main.go
