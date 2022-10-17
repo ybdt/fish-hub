@@ -9,8 +9,13 @@
 7.2.x最后版本7.2.9
 7.3.x最后版本7.3.9
 7.4.x最后版本7.4.9
-
-注意：phpstudy新版本中下载php解释器的位置从原来的“更多版本”改为“软件管理”
 ```
-参考链接：  
-https://windows.php.net/downloads/releases/archives/  
+Windows下php解释器下载地址：https://windows.php.net/downloads/releases/archives/
+
+### 2022/10/17更新
+```
+Windows下php环境配置，通常使用phpstudy：https://www.xp.cn/
+phpstudy新版本中下载php解释器的位置从原来的“更多版本”改为“软件管理”
+
+MacOSX下php环境配置，通常使用mamp：https://www.mamp.info/en/mac/
+```
