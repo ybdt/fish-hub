@@ -1,3 +1,4 @@
+### 启动失败提示需要正确jdk路径的解决办法
 我用的MemoryAnalyzerTool版本是1.12.0，这个版本需要jdk11，可我本机默认是jdk8，所以需要折腾一下
 
 可修改MemoryAnalyzerTool的配置文件MemoryAnalyzer.ini指定jdk路径
@@ -16,3 +17,8 @@ plugins/org.eclipse.equinox.launcher.win32.win32.x86_64_1.2.200.v20210429-1609
 ```
 
 这里需要注意一点，也是我碰到的一个小坑：即使jdk路径有空格也不能用双引号（跟多数情况不太一样），否则还是会报错找不到
+
+### 提取heapdump的sql语句
+```
+select * from java.util.LinkedHashMap$Entry x WHERE (toString(x.key).contains("password"))
+```
