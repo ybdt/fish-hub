@@ -43,7 +43,7 @@ docker exec -it 容器名 /bin/bash
 docker cp awvs:/home/acunetix/.acunetix/data/license /root/Desktop
 
 # 从宿主机拷贝目录到容器，不管容器有没有启动，拷贝命令都会生效
-docker cp /root/Desktop/license awvs15_4:/home/acunetix/.acunetix/data
+docker cp /root/Desktop/license awvs:/home/acunetix/.acunetix/data
 
 # 开始容器
 docker start 容器id（容器名）
