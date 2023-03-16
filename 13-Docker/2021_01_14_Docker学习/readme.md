@@ -39,11 +39,11 @@ docker run --name 容器名 -d -p 8080:8080 -p 22222:22222 镜像名
 # 进入容器
 docker exec -it 容器名 /bin/bash
 
-# 从容器拷贝目录到宿主机（可能不管容器有没有启动，拷贝命令都会生效）
-docker cp spring-core-rce:/app/tomcat/webapps/ /mnt/c/users/anony/Desktop
+# 从容器拷贝目录到宿主机，不管容器有没有启动，拷贝命令都会生效
+docker cp awvs:/home/acunetix/.acunetix/data/license /root/Desktop
 
-# 从宿主机拷贝目录到容器（可能不管容器有没有启动，拷贝命令都会生效）
-docker cp /mnt/c/users/anony/Desktop/output spring-core-rce:/app/tomcat/webapps/
+# 从宿主机拷贝目录到容器，不管容器有没有启动，拷贝命令都会生效
+docker cp /root/Desktop/license awvs15_4:/home/acunetix/.acunetix/data
 
 # 开始容器
 docker start 容器id（容器名）
