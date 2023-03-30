@@ -29,32 +29,42 @@ https://www.cnblogs.com/hi3254014978/p/15172691.html
 ```
 
 # 0x02 Go跨平台编译
-```
 查看支持哪些系统和架构
+```
 go tool dist list
+```
 
-
-Windows下通过Powershell编译Windows、Linux、MacOS
-编译linux下的可执行文件
-$Env:GOOS = "linux"; $Env:GOARCH = "amd64"
-go build -o example_linux_amd64
-
+## Windows下通过Powershell编译Windows、Linux、MacOS
 编译windows下的可执行文件
+```
 $Env:GOOS = "windows"; $Env:GOARCH = "amd64"
-go build -o example_windows_amd64.exe
+go build -o windows_amd64.exe
+```
+
+编译linux下的可执行文件
+```
+$Env:GOOS = "linux"; $Env:GOARCH = "amd64"
+go build -o linux_amd64
+```
 
 编译macos下的可执行文件
+```
 $Env:GOOS = "darwin"; $Env:GOARCH = "amd64"
-go build -o example_darwin_amd64
+go build -o darwin_amd64
+```
 
+# Mac/Linux下通过Bash编译Windows、Linux、MacOS
+编译macos下的可执行文件
+```
+env GOOS=darwin GOARCH=amd64 go build -o darwin_amd64
+```
 
-Linux下通过Bash编译Windows、Linux、MacOS
 编译linux下的可执行文件
-env GOOS=linux GOARCH=amd64 go build -o example_linux_amd64
+```
+env GOOS=linux GOARCH=amd64 go build -o linux_amd64
+```
 
 编译windows下的可执行文件
-env GOOS=windows GOARCH=amd64 go build -o example_windows_amd64.exe
-
-编译macos下的可执行文件
-env GOOS=darwin GOARCH=amd64 go build -o example_darwin_amd64
+```
+env GOOS=windows GOARCH=amd64 go build -o windows_amd64.exe
 ```
