@@ -38,33 +38,33 @@ go tool dist list
 编译windows下的可执行文件
 ```
 $Env:GOOS = "windows"; $Env:GOARCH = "amd64"
-go build -o windows_amd64.exe
+go build -o windows_amd64.exe main.go
 ```
 
 编译linux下的可执行文件
 ```
 $Env:GOOS = "linux"; $Env:GOARCH = "amd64"
-go build -o linux_amd64
+go build -o linux_amd64 main.go
 ```
 
 编译macos下的可执行文件
 ```
 $Env:GOOS = "darwin"; $Env:GOARCH = "amd64"
-go build -o darwin_amd64
+go build -o darwin_amd64 main.go
 ```
 
 # Mac/Linux下通过Bash编译Windows、Linux、MacOS
 编译macos下的可执行文件
 ```
-env GOOS=darwin GOARCH=amd64 go build -o darwin_amd64
+env GOOS=darwin GOARCH=amd64 go build -o darwin_amd64 main.go
 ```
 
 编译linux下的可执行文件
 ```
-env GOOS=linux GOARCH=amd64 go build -o linux_amd64
+env GOOS=linux GOARCH=amd64 go build -o linux_amd64 main.go
 ```
 
 编译windows下的可执行文件
 ```
-env GOOS=windows GOARCH=amd64 go build -o windows_amd64.exe
+env GOOS=windows GOARCH=amd64 go build -o windows_amd64.exe main.go
 ```
