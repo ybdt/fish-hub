@@ -18,9 +18,7 @@ nssm install frp
 参考：https://lz5z.com/nssm将应用写入Windows服务/  
 nssm下载：https://nssm.cc/download  
 
-
-
-经排查，用一段时间失效不是服务或计划任务的问题，是frp设置了有效时间为7天
+### 经排查，用一段时间失效不是服务或计划任务的问题，是frp设置了有效时间为7天
 
 # 参考
 https://www.3mg.net/news/33.html  
