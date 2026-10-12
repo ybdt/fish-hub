@@ -1,13 +1,11 @@
-The current project contains every social fishing point.
+Current project contains every social engineer phishing point and post pentest point.
 
 Every subdirectory contains the recommended article and project, and partial implemented code.
 
 The code in subdirectory has been tested compile successfully and function properly.
 
-### 01-Information-Gather
-### 02-Gateway-Evasion-and-File-Masquerade
-### 03-Click-Masquerade
-
+# Disclaimer
+All the pocs / exps in current project only used for research or educational purpose, other uses are not related to the author.
 
 # 案例学习
 ```
